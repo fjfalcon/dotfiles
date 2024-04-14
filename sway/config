@@ -1,0 +1,274 @@
+# i3 config file (v4)
+#
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+#
+# This config file uses keycodes (bindsym --to-code) and was written for the QWERTY
+# layout.
+#
+# To get a config file with the same key positions, but for your current
+# layout, use the i3-config-wizard
+#
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:Droid Sans Mono Slashed for Powerline 12
+
+#font pango: SauceCodePro Nerd Font Black 8, Icons 12
+
+# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
+#font pango:DejaVu Sans Mono 8
+
+# Before i3 v4.8, we used to recommend this one as the default:
+# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+# The font above is very space-efficient, that is, it looks good, sharp and
+# clear in small sizes. However, its unicode glyph coverage is limited, the old
+# X core fonts rendering does not support right-to-left and this being a bitmap
+# font, it doesn’t scale on retina/hidpi displays.
+
+# use these keys for focus, movement, and resize directions when reaching for
+# the arrows is not convenient
+set $up l
+set $down k
+set $left j
+set $right semicolon
+
+focus_follows_mouse no 
+
+# use Mouse+Mod4 to drag floating windows to their wanted position
+floating_modifier Mod4
+
+#set $menu dmenu_path | dmenu | xargs swaymsg exec --
+set $menu bemenu-run --fn $uifont -b -p "▶" --tf "$prompt" --hf "$highlight" --sf "$highlight" --scf "$highlight" | xargs swaymsg exec
+#set $menu bemenu-run --no-exec | xargs swaymsg exec -- 
+
+# start a terminal
+bindsym --to-code Mod4+Return exec alacritty
+
+# kill focused window
+bindsym --to-code Mod4+Shift+q kill
+
+# start dmenu (a program launcher)
+bindsym --to-code Mod4+d exec $menu
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+# bindsym --to-code Mod4+d exec --no-startup-id i3-dmenu-desktop
+
+# change focus
+bindsym --to-code Mod4+$left focus left
+bindsym --to-code Mod4+$down focus down
+bindsym --to-code Mod4+$up focus up
+bindsym --to-code Mod4+$right focus right
+
+# alternatively, you can use the cursor keys:
+bindsym --to-code Mod4+Left focus left
+bindsym --to-code Mod4+Down focus down
+bindsym --to-code Mod4+Up focus up
+bindsym --to-code Mod4+Right focus right
+
+# move focused window
+bindsym --to-code Mod4+Shift+$left move left
+bindsym --to-code Mod4+Shift+$down move down
+bindsym --to-code Mod4+Shift+$up move up
+bindsym --to-code Mod4+Shift+$right move right
+
+# alternatively, you can use the cursor keys:
+bindsym --to-code Mod4+Shift+Left move left
+bindsym --to-code Mod4+Shift+Down move down
+bindsym --to-code Mod4+Shift+Up move up
+bindsym --to-code Mod4+Shift+Right move right
+
+# split in horizontal orientation
+bindsym --to-code Mod4+h split h
+
+# split in vertical orientation
+bindsym --to-code Mod4+v split v
+
+# enter fullscreen mode for the focused container
+bindsym --to-code Mod4+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+#bindsym --to-code Mod4+s layout stacking
+#bindsym --to-code Mod4+w layout tabbed
+#bindsym --to-code Mod4+e layout toggle split
+bindsym --to-code Mod4+w sticky toggle
+
+# toggle tiling / floating
+bindsym --to-code Mod4+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym --to-code Mod4+space focus mode_toggle
+
+# focus the parent container
+bindsym --to-code Mod4+a focus parent
+
+# focus the child container
+#bindsym --to-code Mod4+d focus child
+
+# move the currently focused window to the scratchpad
+bindsym --to-code Mod4+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym --to-code Mod4+minus scratchpad show
+
+####
+#### #                                    
+#  « ¯ ° · » × ß 🖴 🗖 ‐ – “ ” • … ↑ ↓ − ● ☹️ ♪ ⚑ ⛁ ✔️ ✖️ ✘ ✚ ツ                                                                             
+####🛢
+#⛁
+#⛁
+
+
+set $ws1 "1"
+set $ws2 "2:"
+set $ws3 "3:⛁"
+set $ws4 "4:"
+set $ws5 5
+set $ws6 6
+set $ws7 "7:"
+set $ws8 8
+set $ws9 9
+set $ws10 "10:"
+
+# switch to workspace
+bindsym --to-code Mod4+1 workspace $ws1
+bindsym --to-code Mod4+2 workspace $ws2
+bindsym --to-code Mod4+3 workspace $ws3
+bindsym --to-code Mod4+4 workspace $ws4
+bindsym --to-code Mod4+5 workspace $ws5
+bindsym --to-code Mod4+6 workspace $ws6
+bindsym --to-code Mod4+7 workspace $ws7
+bindsym --to-code Mod4+8 workspace $ws8
+bindsym --to-code Mod4+9 workspace $ws9
+bindsym --to-code Mod4+0 workspace $ws10
+
+# move focused container to workspace
+bindsym --to-code Mod4+Shift+1 move container to workspace $ws1
+bindsym --to-code Mod4+Shift+2 move container to workspace $ws2
+bindsym --to-code Mod4+Shift+3 move container to workspace $ws3
+bindsym --to-code Mod4+Shift+4 move container to workspace $ws4
+bindsym --to-code Mod4+Shift+5 move container to workspace $ws5
+bindsym --to-code Mod4+Shift+6 move container to workspace $ws6
+bindsym --to-code Mod4+Shift+7 move container to workspace $ws7
+bindsym --to-code Mod4+Shift+8 move container to workspace $ws8
+bindsym --to-code Mod4+Shift+9 move container to workspace $ws9
+bindsym --to-code Mod4+Shift+0 move container to workspace $ws10
+
+# reload the configuration file
+bindsym --to-code Mod4+Shift+r reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+#bindsym --to-code Mod4+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym --to-code Mod4+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym --to-code Mod4+x move container to output left
+bindsym --to-code Mod4+Shift+x move workspace to output left
+#bindsym --to-code Mod4+m move workspace to output next
+bindsym --to-code Mod4+m exec "swaymsg -t get_outputs |jq '[.[] | select(.active == true)] | .[(map(.focused) | index(true) + 1) % length].name' |xargs swaymsg move workspace to"
+bindsym --to-code XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
+bindsym --to-code XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym --to-code $left       resize shrink width 10 px or 10 ppt
+        bindsym --to-code $down       resize grow height 10 px or 10 ppt
+        bindsym --to-code $up         resize shrink height 10 px or 10 ppt
+        bindsym --to-code $right      resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym --to-code Left        resize shrink width 10 px or 10 ppt
+        bindsym --to-code Down        resize grow height 10 px or 10 ppt
+        bindsym --to-code Up          resize shrink height 10 px or 10 ppt
+        bindsym --to-code Right       resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym --to-code Return mode "default"
+        bindsym --to-code Escape mode "default"
+}
+
+bindsym --to-code Mod4+r mode "resize"
+
+bindsym --to-code Mod4+Print exec "slurp | grim -g - - | wl-copy"
+
+bindsym --to-code Mod4+F12 exec "/usr/bin/lock.sh" 
+
+# Start swaybar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+#bar {
+#    font pango:DejaVu Sans Mono, FontAwesome 12
+#    position top
+#    status_command i3status-rs
+#	colors {	
+#	background #232a2b
+#        focused_workspace         #191919      #191919cc    #ffffff
+#        active_workspace          #191919      #191919cc    #696f89
+#        inactive_workspace        #191919      #191919cc    #696f89
+#        urgent_workspace          #191919      #191919cc    #c7a551
+#	}
+# 	bindsym --to-code button4 nop
+#	bindsym --to-code button5 nop
+#}
+
+bar {
+	swaybar_command waybar
+}
+for_window [class="^.*"] border pixel 0
+for_window [class="^jetbrains-.+"][window_type=dialog] focus
+for_window [class="jetbrains-.*" title="win0"] floating enable border none
+for_window [instance="sun-awt-X11-XWindowPeer"] border pixel 0
+for_window [class="Yad"] floating enable
+for_window [window_role="pop-up"] floating enable
+for_window [class="zoom"] move container to workspace $ws5
+for_window [class="jetbrains-idea"] move container to workspace $ws7
+for_window [class="jetbrains-datagrip"] move container to workspace $ws3
+for_window [class="TelegramDesktop"] move container to workspace $ws2
+for_window [class="Spotify"] move container to workspace $ws10
+for_window [class="Chromium"] move container to workspace $ws4
+for_window [class="discord"] move container to workspace $ws3
+for_window [class="Steam"] move container to workspace $ws6
+#for_window [class="hearthstone.exe"] move container to workspace $ws1
+for_window [class="hearthstonedecktracker.exe"] move container to workspace $ws1
+#smart_gaps off
+for_window [instance="zoom"] move container to workspace $ws5, floating enable
+for_window [instance="join"] move container to workspace $ws5, floating enable
+for_window [title="^Zoom Meeting$"] move containter to workspace $ws5, floating enable, resize set 1486 px 1166 px
+for_window [title="^Zoom - Licensed Account$"] move containter to workspace $ws5, floating enable, resize set 392 px 483 px
+for_window [title="^Chat$"] move containter to workspace $ws5, floating enable,  resize set 596 px 600 px
+for_window [class="(.*join\?action\=join.*|.*zoom.*)"] move containter to workspace $ws5, floating enable
+for_window [class="(.*join\?action\=join.*|.*zoom.*)" title="Zoom - Licensed Account"] move containter to workspace $ws5, floating disable
+for_window [class="(.*join\?action\=join.*|.*zoom.*)" title="Zoom Meeting"] move containter to workspace $ws5, floating disable
+#for_window [title="Zoom.*"] move container to workspace $ws5
+#autostart
+#exec --no-startup-id picom -CG -b --config ~/.config/picom/picom.conf
+exec --no-startup-id blueman-applet
+exec --no-startup-id nm-applet 
+#exec --no-startup-id xautolock -time 5 -locker '/usr/bin/lock.sh' & 
+
+# keyboard layouts
+#exec --no-startup-id "setxkbmap -model pc105 -layout us,ru -option grp:caps_toggle,grp_led:scroll"
+exec --no-startup-id "echo 0 | sudo tee /sys/module/hid_apple/parameters/fnmode"
+
+# notifications:
+exec --no-startup-id "dunst"
+#export _JAVA_AWT_WM_NONREPARENTING=1
+default_border none
+output DP-1 mode 3440x1440@144.000Hz
+output DP-2 mode 2560x1440@143.999Hz pos 0 0 
+input * {
+	xkb_layout "us,ru"
+	xkb_options "grp:caps_toggle"
+}
+
+exec wl-paste -t text --watch clipman store --no-persist
+exec --no-startup-id /home/fjfalcon/.cargo/bin/i3-autolayout
+
+exec "dbus-update-activation-environment --systemd --all "
+exec "dbus-update-activation-environment --systemd XDG_CURRENT_DESKTOP=sway "
+

@@ -1,0 +1,362 @@
+#background_opacity = 0.7
+import = ["/home/fjfalcon/.alacritty-colorscheme/themes/solarized_dark.toml"]
+
+[[colors.indexed_colors]]
+color = "0xcb4b16"
+index = 16
+
+[[colors.indexed_colors]]
+color = "0xd33682"
+index = 17
+
+[[colors.indexed_colors]]
+color = "0x073642"
+index = 18
+
+[[colors.indexed_colors]]
+color = "0x586e75"
+index = 19
+
+[[colors.indexed_colors]]
+color = "0x839496"
+index = 20
+
+[[colors.indexed_colors]]
+color = "0xeee8d5"
+index = 21
+
+[colors.bright]
+black = "0x657b83"
+blue = "0x268bd2"
+cyan = "0x2aa198"
+green = "0x859900"
+magenta = "0x6c71c4"
+red = "0xdc322f"
+white = "0xfdf6e3"
+yellow = "0xb58900"
+
+[colors.cursor]
+cursor = "0x93a1a1"
+text = "0x002b36"
+
+[colors.normal]
+black = "0x002b36"
+blue = "0x268bd2"
+cyan = "0x2aa198"
+green = "0x859900"
+magenta = "0x6c71c4"
+red = "0xdc322f"
+white = "0x93a1a1"
+yellow = "0xb58900"
+
+[colors.primary]
+background = "0x002b36"
+foreground = "0x93a1a1"
+
+[cursor]
+thickness = 0.18
+vi_mode_style = "Block"
+
+#[dpi]
+#
+#x = 109.0
+#y = 110.0
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 10
+
+[font.bold]
+family = "SauceCodePro Nerd Font"
+style = "Bold"
+
+[font.italic]
+family = "SauceCodePro Nerd Font"
+style = "Italic"
+
+[font.normal]
+family = "SauceCodePro Nerd Font"
+style = "Regular"
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "V"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "C"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "V"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "Quit"
+key = "Q"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "Quit"
+key = "W"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "Equals"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "Minus"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "ResetFontSize"
+key = "Key0"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "ScrollToBottom"
+key = "End"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "ScrollToTop"
+key = "Home"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "U"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "U"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "U"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "U"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "U"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "U"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "U"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "U"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "U"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "U"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "U"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "U"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "U"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "U"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "U"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "U"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "U"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "U"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "D"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "D"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "D"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "D"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "D"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "D"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "D"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "D"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "D"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "D"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "D"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "D"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "D"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "D"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "D"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "D"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "D"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "D"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "ToggleViMode"
+key = "LBracket"
+mods = "Control|Alt"
+
+[[keyboard.bindings]]
+action = "ToggleViMode"
+key = "Q"
+mode = "Vi"
+
+[[keyboard.bindings]]
+action = "First"
+key = "H"
+mode = "Vi"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "Last"
+key = "L"
+mode = "Vi"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "Equals"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "Minus"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "P"
+mods = "Control|Alt"
+
+[mouse]
+hide_when_typing = true
+
+[selection]
+save_to_clipboard = true
+
+[window]
+decorations = "none"
+dynamic_padding = true
+
+[window.padding]
+x = 0
+y = 0
