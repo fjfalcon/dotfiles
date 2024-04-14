@@ -1,0 +1,71 @@
+[theme]
+theme = "native"
+[icons]
+icons = "awesome5"
+
+[[block]]
+block = "focused_window"
+format = "$title.str(max_w:300) | "
+[block.theme_overrides]
+idle_fg = "#0FA0AF"
+
+#[[block]]
+#block = "custom"
+#command = 'printf "\\uf2d0 " && xtitle'
+#interval = 1
+
+[[block]]
+block = "memory"
+#display_type = "memory"
+format = "$mem_used.eng(w:0)/$mem_total.eng(w:0)($mem_used_percents.eng(w:0))"
+#format_swap = "{swap_used_percents}"
+#format = "$mem_used"
+[block.theme_overrides]
+idle_fg = '#8CE000'
+
+[[block]]
+block = "temperature"
+#collapsed = false
+interval = 10
+format = "$max"
+chip = "coretemp-isa-0000"
+[block.theme_overrides]
+idle_fg = '#4ec2f7'
+
+
+[[block]]
+block = "cpu"
+interval = 1
+[block.theme_overrides]
+idle_fg = '#2ef3a0'
+#[[block]]
+#block = "net"
+#device = "wlo1"
+
+
+[[block]]
+block = "sound"
+driver = "pulseaudio"
+name = "alsa_input.usb-0c76_USB_PnP_Audio_Device-00.mono-fallback"
+device_kind = "source"
+
+[[block]]
+block = "sound"
+driver = "pulseaudio"
+[[block.click]] 
+button = "left"
+cmd = "pavucontrol"
+#[[block.click]]
+#button = "right"
+#cmd = "pactl set-source-mute alsa_input.usb-0c76_USB_PnP_Audio_Device-00.mono-fallback toggle"
+[block.theme_overrides]
+idle_fg = '#ffb64c'
+
+[[block]]
+block = "time"
+interval = 5
+#format = "%a %d/%m %R"
+format = "$timestamp.datetime(f:'%A %e %B %H:%M',l:ru_RU)"
+[block.theme_overrides]
+idle_fg = '#6499ff'
+
