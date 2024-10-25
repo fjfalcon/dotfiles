@@ -1,8 +1,7 @@
 return {
 	{
-		'mfussenegger/nvim-jdtls',
+		"mfussenegger/nvim-jdtls",
 		lazy = true,
-		ft = { 'java' },
+		ft = { "java" },
 	},
 }
-
