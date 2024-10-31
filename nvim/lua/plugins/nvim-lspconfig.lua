@@ -3,12 +3,6 @@ return {
 		"neovim/nvim-lspconfig",
 		config = function()
 			local lspconfig = require("lspconfig")
-			vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Goto declaration" })
-			vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "Goto implementation" })
-			vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Goto definition" })
-			vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action" })
-			vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { noremap = true, silent = true, desc = "Rename" })
-			vim.keymap.set("n", "<leader>o", vim.lsp.buf.format, { desc = "Format code" })
 			lspconfig.lua_ls.setup({
 				on_attach = on_attach,
 				capabilities = capabilities,
