@@ -35,5 +35,10 @@ return {
 				},
 			})
 		end,
+		setup = {
+
+			--			require("lspconfig").jdtls.setup({}),
+			--			require("java").setup({}),
+		},
 	},
 }
