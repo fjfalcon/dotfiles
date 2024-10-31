@@ -7,9 +7,6 @@ return {
 				"github:mason-org/mason-registry",
 			},
 		},
-		config = function()
-			require("mason").setup()
-		end,
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
@@ -25,23 +22,15 @@ return {
 	},
 	{
 		"nvim-java/nvim-java",
+		dependencies = {
+			"nvim-java/lua-async-await",
+			"nvim-java/nvim-java-core",
+			"nvim-java/nvim-java-core",
+			"nvim-java/nvim-java-refactor",
+			"nvim-java/nvim-java-test",
+			"nvim-java/nvim-java-dap",
+		},
 	},
-	{
-		"nvim-java/lua-async",
-	},
-	{
-		"nvim-java/nvim-java-core",
-	},
-	{
-		"nvim-java/nvim-java-refactor",
-	},
-	{
-		"nvim-java/nvim-java-test",
-	},
-	{
-		"nvim-java/nvim-java-dap",
-	},
-
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
