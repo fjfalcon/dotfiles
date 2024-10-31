@@ -7,5 +7,10 @@ return {
 			"nvim-tree/nvim-web-devicons",
 			"MunifTanjim/nui.nvim",
 		},
+		config = function()
+			require("neo-tree").setup({
+				auto_expand_width = true,
+			})
+		end,
 	},
 }
