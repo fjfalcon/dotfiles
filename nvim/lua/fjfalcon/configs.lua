@@ -6,4 +6,5 @@ vim.opt.list = true
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 vim.opt.showtabline = 2
 vim.o.tabline = "%t"
+vim.opt.clipboard = "unnamedplus"
 --vim.o.statuscolumn = "%s %l %r"
