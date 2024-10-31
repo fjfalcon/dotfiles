@@ -1,16 +1,20 @@
 -- neotree
 
-vim.keymap.set(
-	"n",
-	"<A-1>",
-	--        function()
-	--                if (vim.fn.bufname():match 'NvimTree_') then
-	--                        "<Cmd>Neotree toogle position=left<CR>"
-	--                end
-	--        end
-	--        )
-	"<Cmd>Neotree toggle position=left<CR>"
-)
+function ToggleNeotree()
+	local view = require("neo-tree.sources.manager").get_state("filesystem").winid
+
+	if view == nil then
+		vim.cmd("Neotree toggle")
+	else
+		if vim.fn.bufname():match("neo%-tree filesystem") then
+			vim.cmd("Neotree toggle")
+		else
+			vim.cmd("Neotree focus")
+		end
+	end
+end
+
+vim.keymap.set("n", "<A-1>", ToggleNeotree, { noremap = true, silent = true })
 
 -- windows
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
