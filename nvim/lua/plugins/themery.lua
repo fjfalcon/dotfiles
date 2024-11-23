@@ -3,7 +3,7 @@ return {
 	lazy = false,
 	config = function()
 		require("themery").setup({
-			themes = { "solarized" },
+			themes = { "solarized", "catppuccin-latte" },
 		})
 	end,
 }
