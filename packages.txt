@@ -1,0 +1,87 @@
+# Base packages used by this dotfiles setup.
+# Install with:  sudo pacman -S --needed - < packages.txt
+# Lines starting with # are ignored.
+
+# --- Wayland / Sway stack ---
+sway
+swaybg
+swayidle
+swaylock
+waybar
+xdg-desktop-portal
+xdg-desktop-portal-gtk
+xdg-desktop-portal-wlr
+qt5-wayland
+qt6-wayland
+
+# --- Terminal & shell ---
+alacritty
+zsh
+zsh-completions
+zsh-syntax-highlighting
+zsh-autosuggestions
+zsh-theme-powerlevel10k
+git
+fzf
+ripgrep
+fd
+bat
+eza
+zoxide
+
+# --- Launcher / utilities ---
+bemenu
+bemenu-wayland
+wofi
+wl-clipboard
+cliphist
+grim
+slurp
+swappy
+brightnessctl
+playerctl
+pamixer
+pavucontrol
+
+# --- Notifications ---
+dunst
+swaync
+libnotify
+
+# --- Audio ---
+pipewire
+pipewire-pulse
+pipewire-alsa
+pipewire-jack
+wireplumber
+easyeffects
+
+# --- Network / bluetooth ---
+networkmanager
+network-manager-applet
+bluez
+bluez-utils
+blueman
+
+# --- Editor ---
+neovim
+vim
+xclip
+
+# --- Fonts ---
+ttf-jetbrains-mono-nerd
+ttf-firacode-nerd
+ttf-nerd-fonts-symbols       # icon-only fallback for Pango (waybar)
+ttf-nerd-fonts-symbols-mono
+ttf-nerd-fonts-symbols-common
+ttf-font-awesome
+noto-fonts
+noto-fonts-emoji
+noto-fonts-cjk
+ttf-dejavu
+
+# --- GTK / Qt theming ---
+qt5ct
+qt6ct
+nwg-look
+papirus-icon-theme

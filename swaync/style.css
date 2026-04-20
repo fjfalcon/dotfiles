@@ -1,0 +1,288 @@
+/* swaync — Solarized Dark theme.
+ * Palette mirrors waybar/alacritty/dunst for visual consistency. */
+
+@define-color base03  #002b36;
+@define-color base02  #073642;
+@define-color base01  #586e75;
+@define-color base00  #657b83;
+@define-color base0   #839496;
+@define-color base1   #93a1a1;
+@define-color base2   #eee8d5;
+@define-color base3   #fdf6e3;
+@define-color yellow  #b58900;
+@define-color orange  #cb4b16;
+@define-color red     #dc322f;
+@define-color magenta #d33682;
+@define-color violet  #6c71c4;
+@define-color blue    #268bd2;
+@define-color cyan    #2aa198;
+@define-color green   #859900;
+
+* {
+    font-family: "JetBrainsMono Nerd Font Mono", "Symbols Nerd Font Mono",
+                 "Font Awesome 7 Free", "Font Awesome 7 Brands",
+                 "Noto Color Emoji", monospace;
+    font-size: 13px;
+}
+
+/* ====================================================== popup notifications */
+.notification-row {
+    outline: none;
+    margin: 6px;
+    padding: 0;
+    background: transparent;
+}
+
+.notification {
+    background: alpha(@base02, 0.96);
+    border: 1px solid @base01;
+    border-radius: 12px;
+    margin: 0;
+    padding: 0;
+    box-shadow: 0 6px 18px alpha(black, 0.35);
+}
+
+.notification-content {
+    background: transparent;
+    padding: 12px 14px;
+    border-radius: 12px;
+    margin: 0;
+}
+
+.summary {
+    font-size: 14px;
+    font-weight: bold;
+    color: @base3;
+    text-shadow: none;
+}
+
+.time {
+    font-size: 11px;
+    color: @base0;
+    text-shadow: none;
+    margin-right: 8px;
+}
+
+.body {
+    font-size: 13px;
+    color: @base2;
+    text-shadow: none;
+    margin-top: 4px;
+}
+
+.body-image {
+    margin-top: 8px;
+    border-radius: 8px;
+    background-color: @base03;
+}
+
+.app-icon, image {
+    border-radius: 6px;
+}
+
+/* close-X button */
+.close-button {
+    background: @red;
+    color: @base3;
+    text-shadow: none;
+    padding: 0;
+    border-radius: 100%;
+    margin-top: 8px;
+    margin-right: 8px;
+    box-shadow: none;
+    border: none;
+    min-width: 22px;
+    min-height: 22px;
+}
+
+.close-button:hover {
+    background: @orange;
+    transition: background 0.15s ease;
+}
+
+/* ----- urgency border accents ----- */
+.notification.low {
+    border-color: @base01;
+}
+.notification.normal {
+    border-color: @blue;
+}
+.notification.critical {
+    border-color: @red;
+    background: alpha(@red, 0.18);
+}
+.notification.critical .summary,
+.notification.critical .body {
+    color: @base3;
+}
+
+/* ====================================================== action buttons ===== */
+.notification-default-action,
+.notification-action {
+    padding: 4px;
+    margin: 0;
+    box-shadow: none;
+    background: transparent;
+    border: none;
+    color: @base2;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.notification-default-action {
+    border-radius: 12px;
+}
+
+.notification-default-action:not(:only-child) {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.notification-action {
+    border-top: 1px solid @base01;
+    border-radius: 0;
+}
+
+.notification-action:first-child {
+    border-bottom-left-radius: 12px;
+}
+.notification-action:last-child {
+    border-bottom-right-radius: 12px;
+}
+
+.notification-default-action:hover,
+.notification-action:hover {
+    background: @base01;
+    color: @base3;
+}
+
+/* inline-reply (Telegram, IRC, etc.) */
+.inline-reply {
+    margin-top: 8px;
+}
+.inline-reply-entry {
+    background: @base03;
+    color: @base2;
+    caret-color: @base2;
+    border: 1px solid @base01;
+    border-radius: 8px;
+}
+.inline-reply-button {
+    background: @blue;
+    color: @base3;
+    border-radius: 8px;
+    margin-left: 6px;
+    border: none;
+}
+
+/* ====================================================== control center ==== */
+.control-center {
+    background: alpha(@base03, 0.97);
+    border: 1px solid @base01;
+    border-radius: 14px;
+    padding: 10px;
+    box-shadow: 0 8px 24px alpha(black, 0.45);
+    margin: 8px;
+}
+
+/* control-center notification cards */
+.control-center .notification-row {
+    margin: 4px 0;
+}
+
+.control-center .notification {
+    background: @base02;
+    border: 1px solid @base01;
+    box-shadow: none;
+}
+
+.widget-title > label {
+    color: @base3;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.widget-title > button {
+    background: @base02;
+    color: @base2;
+    border: 1px solid @base01;
+    border-radius: 8px;
+    padding: 4px 10px;
+}
+.widget-title > button:hover {
+    background: @red;
+    color: @base3;
+    border-color: @red;
+}
+
+/* DnD switch */
+.widget-dnd > label {
+    color: @base2;
+}
+.widget-dnd > switch {
+    background: @base02;
+    border: 1px solid @base01;
+    border-radius: 12px;
+}
+.widget-dnd > switch:checked {
+    background: @blue;
+    border-color: @blue;
+}
+.widget-dnd > switch slider {
+    background: @base2;
+    border-radius: 10px;
+}
+
+/* MPRIS widget (media player) */
+.widget-mpris {
+    background: @base02;
+    border: 1px solid @base01;
+    border-radius: 10px;
+    padding: 8px;
+    margin: 4px 0;
+}
+.widget-mpris-player {
+    padding: 6px;
+    background: transparent;
+}
+.widget-mpris-title {
+    color: @base3;
+    font-weight: bold;
+}
+.widget-mpris-subtitle {
+    color: @base0;
+    font-size: 11px;
+}
+
+/* quick-action toggles */
+.widget-buttons-grid {
+    background: transparent;
+    padding: 6px;
+}
+.widget-buttons-grid > flowbox > flowboxchild > button {
+    background: @base02;
+    border: 1px solid @base01;
+    color: @base2;
+    border-radius: 10px;
+    margin: 4px;
+    padding: 8px 12px;
+    font-size: 16px;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.widget-buttons-grid > flowbox > flowboxchild > button:hover {
+    background: @base01;
+    color: @base3;
+}
+.widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked {
+    background: @blue;
+    color: @base3;
+    border-color: @blue;
+}
+
+/* empty state */
+.widget-label > label {
+    color: @base0;
+}
+
+.floating-notifications {
+    background: transparent;
+}

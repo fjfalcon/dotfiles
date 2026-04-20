@@ -1,0 +1,296 @@
+// =============================================================================
+//  Solarized Dark — Telegram Desktop palette
+//
+//  Apply via:  Telegram → Settings → Chat Settings → Choose from file → pick
+//              this .tdesktop-palette.  Telegram saves the result as the
+//              active theme; switching back is one click on any theme tile.
+//
+//  Built on top of the default "night" base — only the keys that drive the
+//  overall feel are overridden, and Telegram fills the rest with sensible
+//  Solarized-compatible defaults from the night palette.  This keeps the
+//  file short and survives Telegram updates that add new colour keys.
+//
+//  Palette reference (Ethan Schoonover, https://ethanschoonover.com/solarized):
+//      base03  #002b36   (deepest bg)
+//      base02  #073642   (panel bg)
+//      base01  #586e75   (muted fg)
+//      base00  #657b83   (body fg alt)
+//      base0   #839496   (body fg)
+//      base1   #93a1a1   (emphasised fg)
+//      base2   #eee8d5   (light bg)
+//      base3   #fdf6e3   (lightest bg)
+//      yellow  #b58900   orange #cb4b16   red    #dc322f
+//      magenta #d33682   violet #6c71c4   blue   #268bd2
+//      cyan    #2aa198   green  #859900
+// =============================================================================
+
+//@base: night
+
+// ------------------------------------------------------------ window -------
+windowBg:                 #002b36;       // base03 — main canvas
+windowFg:                 #eee8d5;       // base2  — main text
+windowBgOver:             #073642;       // base02 — hover
+windowBgRipple:           #4d7679;       // mix(base02, base01)
+windowBgActive:           #268bd2;       // accent (links, focused buttons)
+windowFgActive:           #fdf6e3;       // base3  — text on accent
+windowActiveTextFg:       #2aa198;       // cyan   — active text accent
+windowSubTextFg:          #586e75;       // base01 — secondary text
+windowSubTextFgOver:      #93a1a1;       // base1
+windowBoldFg:             #fdf6e3;       // base3
+windowBoldFgOver:         #fdf6e3;
+windowShadowFg:           #00000088;
+windowShadowFgFallback:   #002b36;
+
+// ------------------------------------------------------------ title bar ----
+titleBg:                  #073642;
+titleShadow:              #00000066;
+titleButtonBg:            #073642;
+titleButtonFg:            #586e75;
+titleButtonBgOver:        #4d7679;
+titleButtonFgOver:        #eee8d5;
+titleButtonCloseBg:       #073642;
+titleButtonCloseFg:       #586e75;
+titleButtonCloseBgOver:   #dc322f;
+titleButtonCloseFgOver:   #fdf6e3;
+titleFgActive:            #eee8d5;
+titleFg:                  #586e75;
+
+// ------------------------------------------------------------ boxes --------
+boxBg:                    #002b36;
+boxTextFg:                #eee8d5;
+boxTextFgGood:            #859900;
+boxTextFgError:           #dc322f;
+boxTitleFg:               #fdf6e3;
+boxSearchBg:              #073642;
+boxTitleAdditionalFg:     #586e75;
+boxTitleCloseFg:          #586e75;
+boxTitleCloseFgOver:      #eee8d5;
+
+// ------------------------------------------------------------ buttons ------
+activeButtonBg:           #268bd2;
+activeButtonBgOver:       #2079bd;
+activeButtonBgRipple:     #1e6ba8;
+activeButtonFg:           #fdf6e3;
+activeButtonFgOver:       #fdf6e3;
+activeButtonSecondaryFg:  #b3d7f2;
+activeButtonSecondaryFgOver: #b3d7f2;
+lightButtonBg:            #073642;
+lightButtonBgOver:        #4d7679;
+lightButtonBgRipple:      #586e75;
+lightButtonFg:            #2aa198;
+lightButtonFgOver:        #2aa198;
+attentionButtonFg:        #dc322f;
+attentionButtonFgOver:    #dc322f;
+attentionButtonBgOver:    #dc322f33;
+attentionButtonBgRipple:  #dc322f55;
+outlineButtonBg:          #002b36;
+outlineButtonBgOver:      #073642;
+outlineButtonOutlineFg:   #268bd2;
+outlineButtonBgRipple:    #4d7679;
+
+// ------------------------------------------------------------ menu ---------
+menuBg:                   #073642;
+menuBgOver:               #4d7679;
+menuBgRipple:             #586e75;
+menuFg:                   #eee8d5;
+menuFgDisabled:           #586e75;
+menuIconFg:               #93a1a1;
+menuIconFgOver:           #eee8d5;
+menuSeparatorFg:          #586e75;
+
+// ------------------------------------------------------------ chat list ----
+dialogsBg:                #002b36;
+dialogsBgOver:            #073642;
+dialogsBgActive:          #14545e;       // dark Solarized cyan, same as msgOutBg
+dialogsRippleBg:          #4d7679;
+dialogsRippleBgActive:    #1d6f7c;
+dialogsNameFg:            #eee8d5;
+dialogsNameFgOver:        #fdf6e3;
+dialogsNameFgActive:      #fdf6e3;
+dialogsTextFg:            #93a1a1;
+dialogsTextFgOver:        #93a1a1;
+dialogsTextFgActive:      #fdf6e3;
+dialogsTextFgService:     #2aa198;
+dialogsTextFgServiceOver: #2aa198;
+dialogsTextFgServiceActive: #fdf6e3;
+dialogsDraftFg:           #cb4b16;
+dialogsDraftFgOver:       #cb4b16;
+dialogsDraftFgActive:     #fdf6e3;
+dialogsDateFg:            #586e75;
+dialogsDateFgOver:        #93a1a1;
+dialogsDateFgActive:      #fdf6e3;
+dialogsVerifiedIconBg:    #268bd2;
+dialogsVerifiedIconFg:    #fdf6e3;
+dialogsSendingIconFg:     #586e75;
+dialogsSendingIconFgActive: #fdf6e3;
+dialogsSentIconFg:        #2aa198;
+dialogsSentIconFgActive:  #fdf6e3;
+dialogsUnreadBg:          #859900;
+dialogsUnreadBgMuted:     #586e75;
+dialogsUnreadBgActive:    #fdf6e3;
+dialogsUnreadBgMutedActive: #b3d7f2;
+dialogsUnreadFg:          #fdf6e3;
+dialogsUnreadFgActive:    #14545e;
+dialogsForeverIconFg:     #2aa198;
+dialogsArchiveBg:         #073642;
+dialogsArchiveFg:         #93a1a1;
+dialogsArchiveBgRipple:   #4d7679;
+
+// ------------------------------------------------------------ search bar ---
+searchedBarBg:            #073642;
+searchedBarFg:            #93a1a1;
+
+// ------------------------------------------------------------ top bar ------
+topBarBg:                 #073642;
+
+// ------------------------------------------------------------ messages -----
+// "In"  = received bubbles (left).  "Out" = your bubbles (right).
+msgInBg:                  #073642;
+msgInBgSelected:          #4d7679;
+msgOutBg:                 #14545e;       // dark Solarized cyan, calm and on-palette
+msgOutBgSelected:         #1d6f7c;
+msgSelectOverlay:         #268bd233;
+msgStickerOverlay:        #073642cc;
+msgInServiceFg:           #2aa198;
+msgInServiceFgSelected:   #2aa198;
+msgOutServiceFg:          #2aa198;
+msgOutServiceFgSelected:  #2aa198;
+msgInShadow:              #00000033;
+msgInShadowSelected:      #00000022;
+msgOutShadow:             #00000033;
+msgOutShadowSelected:     #00000022;
+msgInDateFg:              #93a1a1;
+msgInDateFgSelected:      #fdf6e3;
+msgOutDateFg:             #93a1a1;
+msgOutDateFgSelected:     #fdf6e3;
+msgServiceFg:             #eee8d5;
+msgServiceBg:             #073642cc;
+msgServiceBgSelected:     #4d7679cc;
+msgInReplyBarColor:       #268bd2;
+msgInReplyBarSelColor:    #2aa198;
+msgOutReplyBarColor:      #2aa198;
+msgOutReplyBarSelColor:   #859900;
+msgImgReplyBarColor:      #fdf6e3;
+msgInMonoFg:              #93a1a1;
+msgOutMonoFg:             #93a1a1;
+msgDateImgFg:             #fdf6e3;
+msgDateImgBg:             #00000088;
+msgDateImgBgOver:         #000000aa;
+msgDateImgBgSelected:     #268bd2cc;
+msgFileThumbLinkInFg:     #268bd2;
+msgFileThumbLinkOutFg:    #268bd2;
+msgFileInBg:              #2aa198;
+msgFileInBgOver:          #2aa198cc;
+msgFileInBgSelected:      #fdf6e3;
+msgFileOutBg:             #859900;
+msgFileOutBgOver:         #859900cc;
+msgFileOutBgSelected:     #fdf6e3;
+msgWaveformInActive:      #2aa198;
+msgWaveformInInactive:    #586e75;
+msgWaveformOutActive:     #859900;
+msgWaveformOutInactive:   #586e75;
+msgBotKbOverBgAdd:        #073642cc;
+msgBotKbIconFg:           #fdf6e3;
+msgBotKbRippleBg:         #4d7679cc;
+historyOutIconFg:         #2aa198;
+historyOutIconFgSelected: #2aa198;
+
+// 8 author colours used in group chats — full Solarized accent rainbow.
+historyPeer1NameFg:       #268bd2;       // blue
+historyPeer2NameFg:       #859900;       // green
+historyPeer3NameFg:       #b58900;       // yellow
+historyPeer4NameFg:       #d33682;       // magenta
+historyPeer5NameFg:       #cb4b16;       // orange
+historyPeer6NameFg:       #6c71c4;       // violet
+historyPeer7NameFg:       #2aa198;       // cyan
+historyPeer8NameFg:       #dc322f;       // red
+historyPeer1UserpicBg:    #268bd2;
+historyPeer2UserpicBg:    #859900;
+historyPeer3UserpicBg:    #b58900;
+historyPeer4UserpicBg:    #d33682;
+historyPeer5UserpicBg:    #cb4b16;
+historyPeer6UserpicBg:    #6c71c4;
+historyPeer7UserpicBg:    #2aa198;
+historyPeer8UserpicBg:    #dc322f;
+
+historyTextInFg:          #eee8d5;
+historyTextOutFg:         #eee8d5;
+historyLinkInFg:          #268bd2;       // Solarized blue, distinct from cyan bubble bg
+historyLinkOutFg:         #268bd2;
+historyFileNameInFg:      #fdf6e3;
+historyFileNameOutFg:     #fdf6e3;
+historyComposeAreaBg:     #073642;
+historyComposeAreaFg:     #eee8d5;
+historyComposeAreaFgService: #93a1a1;
+historyComposeIconFg:     #586e75;
+historyComposeIconFgOver: #2aa198;
+historySendIconFg:        #2aa198;
+historySendIconFgOver:    #fdf6e3;
+historyUnreadBarBg:       #073642;
+historyUnreadBarBorder:   #002b36;
+historyUnreadBarFg:       #93a1a1;
+historyForwardChooseBg:   #073642cc;
+historyForwardChooseFg:   #fdf6e3;
+
+// ------------------------------------------------------------ scroll -------
+historyScrollBg:          #073642;
+historyScrollBgOver:      #4d7679;
+historyScrollBarBg:       #586e75;
+historyScrollBarBgOver:   #93a1a1;
+scrollBg:                 #073642;
+scrollBgOver:             #4d7679;
+scrollBarBg:              #586e75;
+scrollBarBgOver:          #93a1a1;
+
+// ------------------------------------------------------------ sidebar ------
+sideBarBg:                #073642;
+sideBarBgActive:          #002b36;
+sideBarBgRipple:          #4d7679;
+sideBarTextFg:            #eee8d5;
+sideBarTextFgActive:      #fdf6e3;
+sideBarIconFg:            #93a1a1;
+sideBarIconFgActive:      #fdf6e3;
+sideBarBadgeBg:           #859900;
+sideBarBadgeBgMuted:      #586e75;
+sideBarBadgeFg:           #fdf6e3;
+
+// ------------------------------------------------------------ media --------
+mediaPlayerBg:            #073642;
+mediaPlayerActiveFg:      #2aa198;
+mediaPlayerInactiveFg:    #586e75;
+mediaPlayerDisabledFg:    #586e75;
+
+// ------------------------------------------------------------ mentions -----
+mentionBg:                #073642;
+mentionBgOver:            #4d7679;
+mentionFg:                #2aa198;
+mentionFgOver:            #2aa198;
+mentionFgActive:          #fdf6e3;
+mentionFgOverActive:      #fdf6e3;
+
+// ------------------------------------------------------------ misc accents -
+introBg:                  #002b36;
+introTitleFg:             #fdf6e3;
+introDescriptionFg:       #93a1a1;
+introErrorFg:             #dc322f;
+introCoverTopBg:          #073642;
+introCoverMiddleBg:       #073642;
+introCoverBottomBg:       #002b36;
+mediaviewBg:              #002b36ee;
+mediaviewMenuBg:          #073642e6;
+mediaviewMenuBgOver:      #4d7679;
+mediaviewMenuBgRipple:    #586e75;
+mediaviewMenuFg:          #eee8d5;
+mediaviewFileBg:          #073642;
+mediaviewFileNameFg:      #fdf6e3;
+mediaviewFileSizeFg:      #93a1a1;
+mediaviewFileRedCornerFg: #dc322f;
+mediaviewFileYellowCornerFg: #b58900;
+mediaviewFileGreenCornerFg: #859900;
+mediaviewFileBlueCornerFg: #268bd2;
+mediaviewFileExtFg:       #fdf6e3;
+
+callArrowFg:              #859900;
+callArrowMissedFg:        #dc322f;
+callIconFg:               #fdf6e3;
+membersAboutLimitFg:      #cb4b16;

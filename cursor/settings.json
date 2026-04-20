@@ -1,0 +1,82 @@
+{
+  // ---------------- theme ----------------
+  // "Solarized Dark" is shipped as a built-in theme.
+  "workbench.colorTheme": "Solarized Dark",
+  "workbench.iconTheme": "vs-seti",
+  "workbench.preferredDarkColorTheme": "Solarized Dark",
+  "window.autoDetectColorScheme": false,
+
+  // ---------------- typography ----------------
+  // Match the rest of the desktop (alacritty / waybar / dunst / swaync).
+  "editor.fontFamily": "'JetBrainsMono Nerd Font', 'Source Code Pro', monospace",
+  "editor.fontSize": 13,
+  "editor.fontLigatures": true,
+  "editor.lineHeight": 1.5,
+  "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font Mono', monospace",
+  "terminal.integrated.fontSize": 13,
+
+  // ---------------- editor UX ----------------
+  "editor.cursorBlinking": "smooth",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.smoothScrolling": true,
+  "editor.minimap.enabled": false,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active",
+  "editor.renderWhitespace": "boundary",
+  "editor.rulers": [80, 100, 120],
+  "editor.stickyScroll.enabled": true,
+  "editor.inlineSuggest.enabled": true,
+  "editor.formatOnSave": true,
+  "editor.linkedEditing": true,
+  "editor.suggestSelection": "first",
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+
+  // ---------------- workbench / window ----------------
+  "window.commandCenter": true,
+  "window.titleBarStyle": "custom",
+  "window.menuBarVisibility": "compact",
+  "workbench.list.smoothScrolling": true,
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.tabSizing": "shrink",
+  "workbench.tree.indent": 14,
+  "breadcrumbs.enabled": true,
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.compactFolders": false,
+
+  // ---------------- terminal ----------------
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.cursorStyle": "bar",
+  "terminal.integrated.scrollback": 10000,
+  "terminal.integrated.smoothScrolling": true,
+  "terminal.integrated.defaultProfile.linux": "zsh",
+
+  // ---------------- git ----------------
+  "git.openRepositoryInParentFolders": "never",
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+  "git.autofetch": true,
+
+  // ---------------- language servers ----------------
+  "typescript.tsserver.maxTsServerMemory": 4096,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+
+  // ---------------- security / telemetry ----------------
+  "telemetry.telemetryLevel": "off",
+  "redhat.telemetry.enabled": false,
+  "update.showReleaseNotes": false,
+
+  // ---------------- per-language overrides ----------------
+  "[markdown]": {
+    "editor.wordWrap": "on",
+    "editor.renderWhitespace": "all"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  }
+}

@@ -1,0 +1,46 @@
+#!/usr/bin/env zsh
+# Entry point. Keep this small — real config lives in conf.d/.
+#
+# Boot order:
+#   1. p10k instant prompt (must stay near the top)
+#   2. zinit bootstrap
+#   3. conf.d/*.zsh in numeric order
+#   4. p10k.zsh (prompt config)
+#   5. private.zsh (gitignored — secrets, work-only stuff)
+
+# --------------------------------------------------------- p10k instant -----
+# Initialization that needs console input (passwords, [y/n]) MUST go above.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# --------------------------------------------------------------- paths ------
+typeset -U path PATH
+ZDOTDIR="${ZDOTDIR:-${XDG_CONFIG_HOME:-$HOME/.config}/zsh}"
+
+# ---------------------------------------------------------- zinit boot ------
+ZINIT_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/zinit/zinit.git"
+if [[ ! -d "$ZINIT_HOME" ]]; then
+  print -P "%F{33}==>%f Installing zinit into $ZINIT_HOME"
+  command mkdir -p "$(dirname "$ZINIT_HOME")"
+  command git clone --depth=1 https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME" \
+    && print -P "%F{34}==>%f zinit installed" \
+    || print -P "%F{160}==>%f zinit clone failed"
+fi
+source "$ZINIT_HOME/zinit.zsh"
+
+# --------------------------------------------------- load config fragments --
+if [[ -d "$ZDOTDIR/conf.d" ]]; then
+  for _f in "$ZDOTDIR"/conf.d/*.zsh(N); do
+    source "$_f"
+  done
+  unset _f
+fi
+
+# --------------------------------------------------------------- prompt ----
+[[ -f "$ZDOTDIR/p10k.zsh" ]] && source "$ZDOTDIR/p10k.zsh"
+
+# ------------------------------------------------------------- secrets -----
+# Local-only file with passwords / tokens / work-specific aliases.
+# Create it from private.zsh.example.  Never committed.
+[[ -f "$ZDOTDIR/private.zsh" ]] && source "$ZDOTDIR/private.zsh"

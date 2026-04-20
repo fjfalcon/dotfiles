@@ -1,0 +1,10 @@
+[screencast]
+# Hide the cursor in the captured stream.  Putting the hardware cursor inside
+# the screencopy frame is the most common cause of stalled streams on
+# wlroots+nvidia/intel hybrid setups.  If you really need the pointer in the
+# capture, switch to "embedded" or "metadata" — but expect occasional freezes.
+chooser_type = simple
+exec_before = ""
+exec_after  = ""
+max_fps     = 60
+chooser_cmd = slurp -f %o -or

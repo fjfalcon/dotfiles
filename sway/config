@@ -1,219 +1,362 @@
-font pango:Droid Sans Mono Slashed for Powerline 12
+# =============================================================================
+#  ~/.config/sway/config
+#  Solarized Dark theme.  Workflow: vim-style hjkl, mod = Super.
+#  Reload:   $mod+Shift+r           Help/cheatsheet:  $mod+F1
+# =============================================================================
 
-set $up l
-set $down k
-set $left j
-set $right semicolon
+# ----------------------------------------------------------------- vars -----
+set $mod   Mod4
+set $left  h
+set $down  j
+set $up    k
+set $right l
 
-focus_follows_mouse no
+set $term      alacritty
+set $browser   chromium
+set $files     pcmanfm
+set $menu      fuzzel
+set $lock      swaylock -f
+set $screenshot ~/.config/sway/scripts/screenshot.sh
 
-# use Mouse+Mod4 to drag floating windows to their wanted position
-floating_modifier Mod4
+# Solarized accent palette used by gaps/borders/swaylock.
+set $base03 #002b36
+set $base02 #073642
+set $base01 #586e75
+set $base00 #657b83
+set $base0  #839496
+set $base1  #93a1a1
+set $base2  #eee8d5
+set $base3  #fdf6e3
+set $blue   #268bd2
+set $cyan   #2aa198
+set $red    #dc322f
+set $orange #cb4b16
+set $yellow #b58900
+set $green  #859900
 
-set $menu bemenu-run --fn $uifont -b -p "▶" --tf "$prompt" --hf "$highlight" --sf "$highlight" --scf "$highlight" -H 25 | xargs swaymsg exec
-
-# start a terminal
-bindsym --to-code Mod4+Return exec alacritty
-
-# kill focused window
-bindsym --to-code Mod4+Shift+q kill
-
-# start dmenu (a program launcher)
-bindsym --to-code Mod4+d exec $menu
-# change focus
-bindsym --to-code Mod4+$left focus left
-bindsym --to-code Mod4+$down focus down
-bindsym --to-code Mod4+$up focus up
-bindsym --to-code Mod4+$right focus right
-
-# alternatively, you can use the cursor keys:
-bindsym --to-code Mod4+Left focus left
-bindsym --to-code Mod4+Down focus down
-bindsym --to-code Mod4+Up focus up
-bindsym --to-code Mod4+Right focus right
-
-# move focused window
-bindsym --to-code Mod4+Shift+$left move left
-bindsym --to-code Mod4+Shift+$down move down
-bindsym --to-code Mod4+Shift+$up move up
-bindsym --to-code Mod4+Shift+$right move right
-
-# alternatively, you can use the cursor keys:
-bindsym --to-code Mod4+Shift+Left move left
-bindsym --to-code Mod4+Shift+Down move down
-bindsym --to-code Mod4+Shift+Up move up
-bindsym --to-code Mod4+Shift+Right move right
-
-# split in horizontal orientation
-bindsym --to-code Mod4+h split h
-
-# split in vertical orientation
-bindsym --to-code Mod4+v split v
-
-# enter fullscreen mode for the focused container
-bindsym --to-code Mod4+f fullscreen toggle
-
-bindsym --to-code Mod4+w sticky toggle
-
-# toggle tiling / floating
-bindsym --to-code Mod4+Shift+space floating toggle
-
-# change focus between tiling / floating windows
-bindsym --to-code Mod4+space focus mode_toggle
-
-# focus the parent container
-bindsym --to-code Mod4+a focus parent
-
-# move the currently focused window to the scratchpad
-bindsym --to-code Mod4+Shift+minus move scratchpad
-
-bindsym --to-code Mod4+minus scratchpad show
-
-####
-#### #                                    
-#  « ¯ ° · » × ß 🖴 🗖 ‐ – “ ” • … ↑ ↓ − ● ☹️ ♪ ⚑ ⛁ ✔️ ✖️ ✘ ✚ ツ                                                                             
-####🛢
-#⛁
-#⛁
-
-
-set $ws1 "1"
-set $ws2 "2:"
-set $ws3 "3:⛁"
-set $ws4 "4:"
-set $ws5 5
-set $ws6 6
-set $ws7 "7:"
-set $ws8 8
-set $ws9 9
-set $ws10 "10:"
-
-# switch to workspace
-bindsym --to-code Mod4+1 workspace $ws1
-bindsym --to-code Mod4+2 workspace $ws2
-bindsym --to-code Mod4+3 workspace $ws3
-bindsym --to-code Mod4+4 workspace $ws4
-bindsym --to-code Mod4+5 workspace $ws5
-bindsym --to-code Mod4+6 workspace $ws6
-bindsym --to-code Mod4+7 workspace $ws7
-bindsym --to-code Mod4+8 workspace $ws8
-bindsym --to-code Mod4+9 workspace $ws9
-bindsym --to-code Mod4+0 workspace $ws10
-
-# move focused container to workspace
-bindsym --to-code Mod4+Shift+1 move container to workspace $ws1
-bindsym --to-code Mod4+Shift+2 move container to workspace $ws2
-bindsym --to-code Mod4+Shift+3 move container to workspace $ws3
-bindsym --to-code Mod4+Shift+4 move container to workspace $ws4
-bindsym --to-code Mod4+Shift+5 move container to workspace $ws5
-bindsym --to-code Mod4+Shift+6 move container to workspace $ws6
-bindsym --to-code Mod4+Shift+7 move container to workspace $ws7
-bindsym --to-code Mod4+Shift+8 move container to workspace $ws8
-bindsym --to-code Mod4+Shift+9 move container to workspace $ws9
-bindsym --to-code Mod4+Shift+0 move container to workspace $ws10
-
-# reload the configuration file
-bindsym --to-code Mod4+Shift+r reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-#bindsym --to-code Mod4+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym --to-code Mod4+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-bindsym --to-code Mod4+x move container to output left
-bindsym --to-code Mod4+Shift+x move workspace to output left
-bindsym --to-code Mod4+m exec "swaymsg -t get_outputs |jq '[.[] | select(.active == true)] | .[(map(.focused) | index(true) + 1) % length].name' |xargs swaymsg move workspace to"
-bindsym --to-code XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
-bindsym --to-code XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
-
-mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym --to-code $left       resize shrink width 10 px or 10 ppt
-        bindsym --to-code $down       resize grow height 10 px or 10 ppt
-        bindsym --to-code $up         resize shrink height 10 px or 10 ppt
-        bindsym --to-code $right      resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym --to-code Left        resize shrink width 10 px or 10 ppt
-        bindsym --to-code Down        resize grow height 10 px or 10 ppt
-        bindsym --to-code Up          resize shrink height 10 px or 10 ppt
-        bindsym --to-code Right       resize grow width 10 px or 10 ppt
-
-        # back to normal: Enter or Escape
-        bindsym --to-code Return mode "default"
-        bindsym --to-code Escape mode "default"
-}
-
-bindsym --to-code Mod4+r mode "resize"
-
-bindsym --to-code Mod4+Print exec "slurp | grim -g - - | wl-copy"
-
-bindsym --to-code Mod4+F12 exec "/usr/bin/lock.sh" 
-
-
-bar {
-	swaybar_command waybar
-}
-
-
-for_window [class="^.*"] border pixel 0
-for_window [class="^jetbrains-.+"][window_type=dialog] focus
-for_window [class="jetbrains-.*" title="win0"] floating enable border none
-for_window [instance="sun-awt-X11-XWindowPeer"] border pixel 0
-for_window [class="jetbrains-idea"] move to workspace $ws7
-for_window [class="jetbrains-datagrip"] move  to workspace $ws3
-for_window [app_id="org.telegram.desktop"] move to workspace $ws2
-for_window [class="Spotify"] move  to workspace $ws10
-for_window [class="Chromium"] move to workspace $ws4
-for_window [class="discord"] move to workspace $ws3
-for_window [class="Steam"] move to workspace $ws6
-for_window [app_id="Zoom Workplace"] move to workspace $ws5, floating enable, resize set 1486 px 1166 px
-for_window [class="hearthstonedecktracker.exe"] floating enable
-for_window [title="^HearthstoneOverlay$"] floating enable, sticky enable
-for_window [title="^HearthstoneOverlay$"] pointer_constraints disable
-for_window [title="^HearthstoneOverlay$"] move to workspace $ws1
-for_window [class="hearthstone.exe"] border none, shadows disable
-for_window [title="^Hearthstone$"] border none, shadows disable
-for_window [class="burp-StartBurp"] border none, floating enable
-
-#autostart
-exec --no-startup-id blueman-applet
-exec --no-startup-id nm-applet 
-
-# keyboard fixes
-exec --no-startup-id "echo 0 | sudo tee /sys/module/hid_apple/parameters/fnmode"
-
-# notifications:
-exec --no-startup-id "dunst"
-default_border none
-output DP-2 mode 3440x1440@144.000Hz
-output DP-1 mode 2560x1440@143.999Hz pos 0 0 
+# ------------------------------------------------------------ outputs -------
+output DP-1     mode 2560x1440@143.999Hz pos 0 0
+output DP-2     mode 3440x1440@144.000Hz
 output HDMI-A-1 disable
+
+# Wallpapers (replace with `output * bg #002b36 solid_color` if you wipe
+# ~/wallpaper/).
+output DP-1 bg ~/wallpaper/sapsan-sokol-ptica-hischnik-1378.jpg fill
+output DP-2 bg ~/wallpaper/harrier-sokol-ptica-polet.jpg        fill
+
+# ------------------------------------------------------------- input --------
 input * {
-	xkb_layout "us,ru"
-	xkb_options "grp:caps_toggle"
+    xkb_layout  "us,ru"
+    xkb_options "grp:caps_toggle"
+    repeat_delay 250
+    repeat_rate  35
+}
+input type:touchpad {
+    tap          enabled
+    natural_scroll enabled
+    dwt          enabled
+    accel_profile adaptive
+}
+focus_follows_mouse no
+floating_modifier $mod normal
+
+# ----------------------------------------------------------- appearance -----
+font pango:JetBrainsMono Nerd Font 11
+default_border          none
+default_floating_border none
+hide_edge_borders       smart
+gaps inner 6
+gaps outer 0
+smart_gaps on
+
+# class                  border    bg        text     indicator child_border
+client.focused           $blue     $blue     $base3   $cyan     $blue
+client.focused_inactive  $base02   $base02   $base1   $base02   $base02
+client.unfocused         $base02   $base02   $base01  $base02   $base02
+client.urgent            $red      $red      $base3   $red      $red
+
+# ----------------------------------------------------------- keybinds -------
+bindsym --to-code {
+    # ---- launchers / system ----
+    $mod+Return            exec $term
+    $mod+Shift+q           kill
+    $mod+d                 exec $menu
+    $mod+Shift+d           exec $menu
+    $mod+e                 exec $files
+    $mod+b                 exec $browser
+    $mod+Shift+r           reload
+    $mod+Shift+e           exec swaynag -t warning -m 'Exit sway?' -B 'Yes' 'swaymsg exit'
+    $mod+F12               exec $lock
+    $mod+F1                exec $term -e bash -c 'less ~/.config/sway/cheatsheet.txt'
+
+    # ---- focus ----
+    $mod+$left             focus left
+    $mod+$down             focus down
+    $mod+$up               focus up
+    $mod+$right            focus right
+    $mod+Left              focus left
+    $mod+Down              focus down
+    $mod+Up                focus up
+    $mod+Right             focus right
+    $mod+a                 focus parent
+    $mod+space             focus mode_toggle
+
+    # ---- move ----
+    $mod+Shift+$left       move left
+    $mod+Shift+$down       move down
+    $mod+Shift+$up         move up
+    $mod+Shift+$right      move right
+    $mod+Shift+Left        move left
+    $mod+Shift+Down        move down
+    $mod+Shift+Up          move up
+    $mod+Shift+Right       move right
+
+    # ---- output (multi-monitor) ----
+    $mod+x                 move container to output left
+    $mod+Shift+x           move workspace to output left
+    $mod+m                 exec swaymsg -t get_outputs | jq -r '[.[]|select(.active==true)] | .[(map(.focused)|index(true)+1)%length].name' | xargs -I{} swaymsg move workspace to output {}
+
+    # ---- splits / layout ----
+    # `$mod+v` was the historic split-vertical bind, but it now belongs to
+    # cliphist (see clipboard section below).  Splits moved to backslash —
+    # mnemonic: "\" is the i3/sway convention for split-direction changes.
+    $mod+backslash         split h
+    $mod+Shift+backslash   split v
+    $mod+f                 fullscreen toggle
+    $mod+w                 sticky toggle
+    $mod+Shift+space       floating toggle
+    $mod+s                 layout stacking
+    $mod+t                 layout tabbed
+    $mod+y                 layout toggle split
+
+    # ---- scratchpad ----
+    $mod+Shift+minus       move scratchpad
+    $mod+minus             scratchpad show
+
+    # ---- workspaces ----
+    $mod+1  workspace $ws1
+    $mod+2  workspace $ws2
+    $mod+3  workspace $ws3
+    $mod+4  workspace $ws4
+    $mod+5  workspace $ws5
+    $mod+6  workspace $ws6
+    $mod+7  workspace $ws7
+    $mod+8  workspace $ws8
+    $mod+9  workspace $ws9
+    $mod+0  workspace $ws10
+    $mod+Tab               workspace back_and_forth
+    $mod+Shift+1  move container to workspace $ws1
+    $mod+Shift+2  move container to workspace $ws2
+    $mod+Shift+3  move container to workspace $ws3
+    $mod+Shift+4  move container to workspace $ws4
+    $mod+Shift+5  move container to workspace $ws5
+    $mod+Shift+6  move container to workspace $ws6
+    $mod+Shift+7  move container to workspace $ws7
+    $mod+Shift+8  move container to workspace $ws8
+    $mod+Shift+9  move container to workspace $ws9
+    $mod+Shift+0  move container to workspace $ws10
+
+    # ---- modes ----
+    $mod+r                 mode "resize"
+    $mod+g                 mode "gromit-mpx"
+
+    # ---- clipboard history (cliphist) ----
+    # `Mod+v`        — pick from history, copy to clipboard
+    # `Mod+Shift+v`  — pick & delete that entry from history
+    # `Mod+Ctrl+v`   — wipe the whole history
+    $mod+v                 exec sh -c 'cliphist list | fuzzel --dmenu --prompt="clip ❯ " --width=80 --lines=15 | cliphist decode | wl-copy'
+    $mod+Shift+v           exec sh -c 'cliphist list | fuzzel --dmenu --prompt="del  ❯ " --width=80 --lines=15 | cliphist delete'
+    $mod+Ctrl+v            exec cliphist wipe
+
+    # ---- screenshots ----
+    $mod+Print             exec $screenshot region
+    $mod+Shift+s           exec $screenshot region
+    Print                  exec $screenshot full
+    $mod+Shift+Print       exec $screenshot window
+    $mod+Ctrl+Print        exec $screenshot edit
+
+    # ---- notifications (swaync) ----
+    # `grave` is the backtick/tilde key, top-left of the keyboard.
+    $mod+grave             exec swaync-client --close-latest
+    $mod+Shift+grave       exec swaync-client --close-all
+    $mod+Ctrl+grave        exec swaync-client --action 0
+    $mod+slash             exec ~/.config/sway/scripts/swaync-toggle.sh
+    $mod+Shift+n           exec swaync-client --toggle-dnd
 }
 
-exec wl-paste -t text --watch clipman store --no-persist
-exec --no-startup-id /home/fjfalcon/.cargo/bin/i3-autolayout
+# Multimedia / brightness — work in any layer, no --to-code needed.
+bindsym XF86AudioRaiseVolume    exec wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+ && $screenshot _osd_vol
+bindsym XF86AudioLowerVolume    exec wpctl set-volume      @DEFAULT_AUDIO_SINK@ 5%-  && $screenshot _osd_vol
+bindsym XF86AudioMute           exec wpctl set-mute        @DEFAULT_AUDIO_SINK@ toggle
+bindsym XF86AudioMicMute        exec wpctl set-mute        @DEFAULT_AUDIO_SOURCE@ toggle
+bindsym XF86AudioPlay           exec playerctl play-pause
+bindsym XF86AudioNext           exec playerctl next
+bindsym XF86AudioPrev           exec playerctl previous
+bindsym XF86AudioStop           exec playerctl stop
 
-exec "dbus-update-activation-environment --systemd --all "
-exec "dbus-update-activation-environment --systemd XDG_CURRENT_DESKTOP=sway "
+bindsym XF86MonBrightnessUp     exec brightnessctl set +5% && $screenshot _osd_bri
+bindsym XF86MonBrightnessDown   exec brightnessctl set 5%- && $screenshot _osd_bri
 
-mode "gromit-mpx" {
-    bindsym f7 exec gromit-mpx
-	bindsym f5 exec killall gromit-mpx	
-	bindsym f9 exec gromit-mpx --toggle
-    bindsym Shift+f9 exec gromit-mpx --clear
-    bindsym Ctrl+f9 exec gromit-mpx --visibility
-    bindsym Alt+f9 exec gromit-mpx --quit
-    bindsym f8 exec gromit-mpx --undo
-    bindsym Shift+f8 exec gromit-mpx --redo
+# ----------------------------------------------------------- modes ---------
+mode "resize" {
+    bindsym --to-code $left  resize shrink width  20px
+    bindsym --to-code $down  resize grow   height 20px
+    bindsym --to-code $up    resize shrink height 20px
+    bindsym --to-code $right resize grow   width  20px
+    bindsym Left   resize shrink width  20px
+    bindsym Down   resize grow   height 20px
+    bindsym Up     resize shrink height 20px
+    bindsym Right  resize grow   width  20px
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym --to-code Mod4+g mode "gromit-mpx"
 
+mode "gromit-mpx" {
+    bindsym F7        exec gromit-mpx
+    bindsym F5        exec killall gromit-mpx
+    bindsym F9        exec gromit-mpx --toggle
+    bindsym Shift+F9  exec gromit-mpx --clear
+    bindsym Ctrl+F9   exec gromit-mpx --visibility
+    bindsym Alt+F9    exec gromit-mpx --quit
+    bindsym F8        exec gromit-mpx --undo
+    bindsym Shift+F8  exec gromit-mpx --redo
+    bindsym Return    mode "default"
+    bindsym Escape    mode "default"
+}
+
+# ----------------------------------------------------------- workspaces -----
+# Workspace names are plain digit-strings.  Don't use `set $wsN "N"` (sway
+# keeps quotes inside the variable) and don't use `set $wsN number N`
+# (the `number` keyword leaks into the workspace name when expanded inside
+# `workspace $wsN`, creating zombies named "number 4" etc.).
+set $ws1  1
+set $ws2  2
+set $ws3  3
+set $ws4  4
+set $ws5  5
+set $ws6  6
+set $ws7  7
+set $ws8  8
+set $ws9  9
+set $ws10 10
+
+# ----------------------------------------------------------- window rules ---
+for_window [class="^.*"]                                      border pixel 0
+for_window [app_id="org.telegram.desktop"]                    move to workspace $ws2
+for_window [class="discord"]                                  move to workspace $ws3
+for_window [class="jetbrains-datagrip"]                       move to workspace $ws3
+for_window [class="Chromium"]                                 move to workspace $ws4
+for_window [class="Steam"]                                    move to workspace $ws6
+for_window [class="jetbrains-idea"]                           move to workspace $ws7
+for_window [class="Spotify"]                                  move to workspace $ws10
+for_window [app_id="Zoom Workplace"]                          move to workspace $ws5, floating enable, resize set 1486 1166
+
+# JetBrains splash / dialogs
+for_window [class="^jetbrains-.+"][window_type=dialog]        focus
+for_window [class="jetbrains-.*" title="win0"]                floating enable, border none
+for_window [instance="sun-awt-X11-XWindowPeer"]               border pixel 0
+
+# Hearthstone helpers (kept from prior config)
+for_window [class="hearthstone deck tracker.exe"]             floating enable, focus, shadows disable, move scratchpad, scratchpad show
+for_window [title="^HearthstoneOverlay$"]                     pointer_constraints disable
+for_window [class="hearthstone.exe"]                          border none, shadows disable, focus
+for_window [title="^Hearthstone$"]                            border none, shadows disable, focus
+
+# Misc
+for_window [class="burp-StartBurp"]                           border none, floating enable
+for_window [app_id="pavucontrol"]                             floating enable, resize set 800 600
+for_window [app_id="blueman-manager"]                         floating enable, resize set 800 600
+for_window [app_id="nm-connection-editor"]                    floating enable, resize set 800 600
+for_window [title="^Picture-in-Picture$"]                     floating enable, sticky enable, move position 1280 720, resize set 640 360
+for_window [window_role="pop-up"]                             floating enable
+for_window [window_role="dialog"]                             floating enable
+
+# ----------------------------------------------------------- bar -----------
+# We don't use sway's built-in bar — waybar runs standalone (see autostart
+# below) so it can read its own config.jsonc / style.css with full modules
+# and Nerd Font icons.  Note: we deliberately do NOT declare a `bar { ... }`
+# block here.  Even `bar { mode invisible }` still spawns a swaybar process
+# (just hidden); omitting the block entirely is the only way to keep sway
+# from launching its built-in bar at all.
+
+# ----------------------------------------------------------- xwayland ------
+xwayland enable
+
+# ----------------------------------------------------------- env -----------
+exec_always {
+    export WLR_RENDERER=vulkan
+    # Hardware cursors inside wlr-screencopy frames is the #1 cause of
+    # screencast freezes on amdgpu.  Keep this on for OBS / Firefox / Zoom
+    # screen sharing reliability.
+    export WLR_NO_HARDWARE_CURSORS=1
+    export LIBVA_DRIVER_NAME=radeonsi
+    export VDPAU_DRIVER=radeonsi
+
+    # Tell apps that ask the standard env vars that we are a Wayland session
+    # — Firefox, Electron-based apps (Zoom UI, Slack, Teams), and Chromium
+    # all key off these.
+    export MOZ_ENABLE_WAYLAND=1
+    export QT_QPA_PLATFORM="wayland;xcb"
+    export _JAVA_AWT_WM_NONREPARENTING=1
+    export SDL_VIDEODRIVER=wayland
+}
+
+# Make GTK/Qt apps pick up the right portal under sway.
+#
+# `--all` exports everything sway has (incl. WAYLAND_DISPLAY/SWAYSOCK), the
+# second call re-asserts the bits we care about explicitly so that anything
+# spawned via D-Bus activation (xdg-desktop-portal-{gtk,wlr}, gnome-keyring,
+# nm-applet) sees them too.  Then we kick the portals: D-Bus activation can
+# leave stale instances after a cold boot or `swaymsg reload`, and OBS PipeWire
+# screencast freezes when xdp-wlr is running but its compositor handle is
+# stale.  `obs-restart-portals` is the manual escape hatch for the same issue.
+exec_always dbus-update-activation-environment --systemd --all
+exec_always dbus-update-activation-environment --systemd \
+    DISPLAY WAYLAND_DISPLAY SWAYSOCK \
+    XDG_CURRENT_DESKTOP=sway XDG_SESSION_TYPE=wayland
+
+# Reap any portal processes left over from a previous compositor instance and
+# let systemd start them fresh under the freshly-imported environment.
+exec sh -c 'pkill -x xdg-desktop-portal-wlr xdg-desktop-portal-gtk xdg-desktop-portal 2>/dev/null; \
+            sleep 0.3; \
+            systemctl --user restart xdg-desktop-portal.service'
+
+# ----------------------------------------------------------- autostart -----
+# waybar: re-launch on every `swaymsg reload` so config/CSS edits apply.
+#
+# Why the `sh -c '... ; sleep 0.3; exec waybar ...'` dance:
+#   * `exec waybar` makes waybar a direct child of sway (not a sh-orphan), so
+#     sway sees it in its child-process list and `swaymsg` reload cycles work
+#     cleanly.
+#   * `sleep 0.3` gives the just-pkill'd waybar time to release its
+#     layer-shell surface before the new instance tries to claim it (without
+#     it, reloads sometimes produce two waybars or none at all).
+#   * Logs go to /tmp/waybar.log so silent startup failures (e.g. waybar
+#     racing sway over named outputs DP-1/DP-2 on cold boot) leave a trail.
+exec_always sh -c 'pkill -x waybar; sleep 0.3; exec waybar >/tmp/waybar.log 2>&1'
+
+# nm-applet was the old tray-based NetworkManager UI; it's now replaced by
+# the waybar custom/vpn indicator + sway/scripts/network-menu.sh fuzzel
+# picker, so we don't need it.  Keep this commented in case you ever need
+# the GTK secret-agent for an interactive VPN auth challenge (e.g. an
+# OpenVPN profile asking for a 2FA code) — uncomment then.
+#exec nm-applet --indicator
+# Same story for blueman-applet: replaced by the built-in waybar `bluetooth`
+# module + sway/scripts/bluetooth-menu.sh.  Uncomment if you ever need a
+# pairing agent in the tray for a device that requires PIN/passkey
+# confirmation outside blueman-manager.
+#exec blueman-applet
+exec swaync
+# clipboard history — cliphist watches both the regular and the primary
+# selections, persists ~750 last entries to ~/.cache/cliphist (no images by
+# default; add `--type image` if you really need them).
+exec wl-paste --type text --watch cliphist store
+exec wl-paste --type image --watch cliphist store
+exec ~/.cargo/bin/i3-autolayout
+
+# Apple keyboard fnmode (was in old config; harmless if not Apple).
+exec_always sh -c '[ -w /sys/module/hid_apple/parameters/fnmode ] && echo 0 | sudo tee /sys/module/hid_apple/parameters/fnmode'
+
+# ----------------------------------------------------------- lock ----------
+# No swayidle here — automatic locking/idle was disabled by request.
+# Manual lock is still available via `$mod+F12` (see keybinds).

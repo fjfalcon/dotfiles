@@ -1,0 +1,48 @@
+# swaylock — Solarized Dark, soft & legible.
+daemonize
+ignore-empty-password
+show-failed-attempts
+indicator-caps-lock
+
+# tweak with `swaylock --help` if monitor count changes
+screenshots
+effect-blur=12x4
+effect-vignette=0.3:0.5
+fade-in=0.2
+
+font=JetBrainsMono Nerd Font
+font-size=20
+
+clock
+timestr=%H:%M:%S
+datestr=%a %d %b
+
+indicator
+indicator-radius=120
+indicator-thickness=10
+indicator-idle-visible
+
+# Solarized palette (rrggbbaa)
+inside-color=002b36CC
+inside-clear-color=859900CC
+inside-caps-lock-color=cb4b16CC
+inside-ver-color=268bd2CC
+inside-wrong-color=dc322fCC
+
+ring-color=586e75FF
+ring-clear-color=859900FF
+ring-caps-lock-color=cb4b16FF
+ring-ver-color=268bd2FF
+ring-wrong-color=dc322fFF
+
+key-hl-color=2aa198FF
+bs-hl-color=dc322fFF
+caps-lock-key-hl-color=2aa198FF
+caps-lock-bs-hl-color=cb4b16FF
+
+separator-color=00000000
+text-color=eee8d5FF
+text-clear-color=eee8d5FF
+text-caps-lock-color=eee8d5FF
+text-ver-color=eee8d5FF
+text-wrong-color=eee8d5FF

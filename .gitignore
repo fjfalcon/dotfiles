@@ -1,0 +1,29 @@
+# Editor / OS noise
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+nvim/nvim.log
+*.log
+
+# Local secrets — never commit
+zsh/private.zsh
+**/private.zsh
+**/secrets.zsh
+**/.env
+**/.env.local
+
+# Backups created by install.sh (and ad-hoc .bak.<timestamp> variants)
+backup/
+*.bak
+*.bak.*
+
+# Local overrides
+local.mk
+zsh/local.zsh
+
+# Generated caches (host-specific)
+zsh/.zcompdump*
+**/.zcompdump*

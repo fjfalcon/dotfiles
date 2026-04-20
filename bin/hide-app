@@ -1,0 +1,147 @@
+#!/usr/bin/env bash
+# hide-app — manage which .desktop launchers appear in fuzzel/wofi/etc.
+#
+# Hides system .desktop entries by writing user-side overrides with
+# NoDisplay=true into ~/.local/share/applications/.  System files are never
+# touched, so pacman upgrades stay clean and everything is reversible.
+#
+# Usage:
+#   hide-app                       interactive picker (fuzzel) — pick one
+#   hide-app foo bar               hide foo.desktop, bar.desktop
+#   hide-app --list                show currently hidden entries
+#   hide-app --restore foo         un-hide foo.desktop
+#   hide-app --restore-all         un-hide everything we hid
+#   hide-app --visible             list every visible .desktop (handy for grep)
+
+set -euo pipefail
+
+USER_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/applications"
+SYS_DIRS=(
+    /usr/share/applications
+    /usr/local/share/applications
+    /var/lib/flatpak/exports/share/applications
+    "$HOME/.local/share/flatpak/exports/share/applications"
+)
+
+mkdir -p "$USER_DIR"
+
+# ---------------------------------------------------------------- helpers ---
+list_visible() {
+    # Print one ".desktop name<TAB>display name" per line for entries that
+    # are currently visible (i.e., not hidden by NoDisplay/Hidden).
+    local seen_file
+    declare -A seen=()
+    for d in "${SYS_DIRS[@]}" "$USER_DIR"; do
+        [[ -d "$d" ]] || continue
+        for f in "$d"/*.desktop; do
+            [[ -e "$f" ]] || continue
+            local base="${f##*/}"
+            [[ -n "${seen[$base]:-}" ]] && continue
+            seen[$base]=1
+            # XDG: user override fully replaces system entry — check the file
+            # we'd actually use (user wins).
+            local effective="$f"
+            [[ -f "$USER_DIR/$base" ]] && effective="$USER_DIR/$base"
+            if grep -qE '^(NoDisplay|Hidden)\s*=\s*true' "$effective"; then
+                continue
+            fi
+            local name
+            name=$(awk -F= '/^Name=/{print $2; exit}' "$effective")
+            printf '%s\t%s\n' "${base%.desktop}" "${name:-<no name>}"
+        done
+    done | sort -u
+}
+
+list_hidden() {
+    [[ -d "$USER_DIR" ]] || return 0
+    for f in "$USER_DIR"/*.desktop; do
+        [[ -e "$f" ]] || continue
+        if grep -qE '^(NoDisplay|Hidden)\s*=\s*true' "$f"; then
+            local base="${f##*/}"
+            local name
+            name=$(awk -F= '/^Name=/{print $2; exit}' "$f")
+            printf '%s\t%s\n' "${base%.desktop}" "${name:-<no name>}"
+        fi
+    done | sort -u
+}
+
+write_override() {
+    local id="$1"; id="${id%.desktop}"
+    local out="$USER_DIR/${id}.desktop"
+    # Try to find the source file to copy Name/Type for nicer Windows lists
+    local src=""
+    for d in "${SYS_DIRS[@]}"; do
+        [[ -f "$d/${id}.desktop" ]] && src="$d/${id}.desktop" && break
+    done
+    if [[ -n "$src" ]]; then
+        # Copy minimal headers + force NoDisplay=true. Don't copy Exec/Icon —
+        # we want this to be inert and skipped by launchers entirely.
+        local name
+        name=$(awk -F= '/^Name=/{print $2; exit}' "$src")
+        cat > "$out" <<EOF
+[Desktop Entry]
+Type=Application
+Name=${name:-$id}
+NoDisplay=true
+EOF
+    else
+        # No system source — we still write a stub so any future re-introduction
+        # of $id stays hidden.
+        cat > "$out" <<EOF
+[Desktop Entry]
+Type=Application
+Name=$id
+NoDisplay=true
+EOF
+    fi
+    printf '  hidden: %s\n' "$id"
+}
+
+restore_one() {
+    local id="$1"; id="${id%.desktop}"
+    local f="$USER_DIR/${id}.desktop"
+    if [[ -f "$f" ]] && grep -qE '^(NoDisplay|Hidden)\s*=\s*true' "$f"; then
+        rm -f -- "$f"
+        printf '  restored: %s\n' "$id"
+    else
+        printf '  not hidden by us: %s\n' "$id" >&2
+    fi
+}
+
+# ---------------------------------------------------------------- dispatch ---
+case "${1:-}" in
+    --list|-l)
+        list_hidden
+        ;;
+    --visible|-v)
+        list_visible
+        ;;
+    --restore)
+        shift
+        if [[ $# -eq 0 ]]; then
+            echo "usage: hide-app --restore <name> [<name>…]" >&2; exit 2
+        fi
+        for n in "$@"; do restore_one "$n"; done
+        ;;
+    --restore-all)
+        list_hidden | cut -f1 | while read -r n; do restore_one "$n"; done
+        ;;
+    --help|-h)
+        sed -n '2,15p' "$0"
+        ;;
+    "")
+        # Interactive: pick from visible entries via fuzzel
+        if ! command -v fuzzel >/dev/null; then
+            echo "fuzzel not found — pass app names as arguments instead." >&2
+            exit 1
+        fi
+        pick=$(list_visible | awk -F'\t' '{printf "%-40s  %s\n", $1, $2}' \
+            | fuzzel --dmenu --prompt='hide ❯ ' --width=60 --lines=20) || exit 0
+        [[ -z "$pick" ]] && exit 0
+        id=$(awk '{print $1}' <<<"$pick")
+        write_override "$id"
+        ;;
+    *)
+        for n in "$@"; do write_override "$n"; done
+        ;;
+esac

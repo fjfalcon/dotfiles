@@ -1,0 +1,23 @@
+# Copy this file to ~/.config/zsh/private.zsh and put your secrets there.
+# private.zsh is gitignored — never committed.
+
+# --- VPN (OpenConnect / GlobalProtect) ---
+# Replace USERNAME / PASSWORD / cert paths with your values.
+#
+# alias vpn='sudo openconnect \
+#   --certificate /home/CHANGEME/vpn/CHANGEME.pfx \
+#   --protocol=gp vpn.example.com \
+#   --csd-wrapper /home/CHANGEME/vpn/hipreport.sh \
+#   -u USERNAME@example.com \
+#   --passwd-on-stdin < /home/CHANGEME/vpn/passwd'
+#
+# Better: store password in a file with mode 0600 and read on demand:
+#   cat /home/CHANGEME/vpn/passwd | sudo openconnect ...
+
+# --- API tokens ---
+# export GITHUB_TOKEN="ghp_..."
+# export OPENAI_API_KEY="sk-..."
+
+# --- work-only env vars ---
+# export COMPANY_INTERNAL_REGISTRY="https://registry.example.com"
+# export COMPANY_HTTP_PROXY="http://proxy.example.com:3128"

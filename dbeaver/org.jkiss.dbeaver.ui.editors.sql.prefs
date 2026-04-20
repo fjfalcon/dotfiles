@@ -1,0 +1,17 @@
+eclipse.preferences.version=1
+sql.editor.color.background.rgb=0,43,54
+sql.editor.color.foreground.rgb=131,148,150
+sql.editor.color.comment.rgb=88,110,117
+sql.editor.color.string.rgb=42,161,152
+sql.editor.color.keyword.rgb=133,153,0
+sql.editor.color.datatype.rgb=181,137,0
+sql.editor.color.delimiter.rgb=203,75,22
+sql.editor.color.function.rgb=38,139,210
+sql.editor.color.parameter.rgb=211,54,130
+sql.editor.color.number.rgb=108,113,196
+sql.editor.color.table.rgb=38,139,210
+sql.editor.color.column.rgb=42,161,152
+sql.editor.color.column.derived.rgb=147,161,161
+sql.editor.matching.brackets=true
+sql.editor.matching.brackets.color.rgb=181,137,0
+sql.editor.current.line.color.rgb=7,54,66

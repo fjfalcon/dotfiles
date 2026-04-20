@@ -1,0 +1,86 @@
+#!/usr/bin/env bash
+# obs-restart-portals — kick xdg-desktop-portal-wlr and the PipeWire stack
+# back into a clean state.  Use this whenever:
+#   * OBS preview is frozen mid-stream
+#   * "Screen Capture (PipeWire)" source shows a black frame
+#   * a reboot used to be the only fix
+#
+# Safe to run while OBS is open: the source must be re-selected once but
+# the OBS process and your scenes survive.
+set -euo pipefail
+
+# ---------------------------------------------------------- env into systemd ---
+# xdg-desktop-portal-{gtk,wlr}.service need WAYLAND_DISPLAY + XDG_CURRENT_DESKTOP
+# to talk to the compositor.  Sway runs `dbus-update-activation-environment`
+# only at session start, so a long-lived session can lose those vars after a
+# `swaymsg reload` or a `systemctl --user daemon-reexec`.  Re-export them.
+export_if_unset() {
+    local key="$1" val="$2"
+    [[ -n "$val" ]] || return 0
+    systemctl --user set-environment "${key}=${val}" 2>/dev/null || true
+}
+
+# Discover from this shell first (it inherits sway's env when launched from a
+# sway terminal).  Fall back to /run/user discovery for cron / IDE shells.
+WLD="${WAYLAND_DISPLAY:-}"
+SWS="${SWAYSOCK:-}"
+XCD="${XDG_CURRENT_DESKTOP:-}"
+
+if [[ -z "$WLD" ]]; then
+    WLD=$(basename "$(ls -1t /run/user/$(id -u)/wayland-* 2>/dev/null | grep -v '\.lock$' | head -1)" 2>/dev/null || true)
+fi
+if [[ -z "$SWS" ]]; then
+    SWS=$(ls -1t /run/user/$(id -u)/sway-ipc.*.sock 2>/dev/null | head -1 || true)
+fi
+[[ -z "$XCD" ]] && XCD="sway"
+
+export_if_unset WAYLAND_DISPLAY      "$WLD"
+export_if_unset SWAYSOCK             "$SWS"
+export_if_unset XDG_CURRENT_DESKTOP  "$XCD"
+dbus-update-activation-environment --systemd \
+    WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP 2>/dev/null || true
+
+# --------------------------------------------------------- portal/pipewire ---
+PORTAL_UNITS=(
+    xdg-desktop-portal-wlr.service
+    xdg-desktop-portal-gtk.service
+    xdg-desktop-portal.service
+)
+PIPEWIRE_UNITS=(
+    wireplumber.service
+    pipewire-pulse.service
+    pipewire.service
+)
+
+stop()  { systemctl --user stop  "$@" 2>/dev/null || true ; }
+start() { systemctl --user start "$@" ; }
+
+echo "==> stopping portal stack (systemd + dbus-spawned strays)"
+stop "${PORTAL_UNITS[@]}"
+# D-Bus activation can spawn portal processes outside systemd's scope.  Reap
+# them by name so the next start gives us a single clean instance.
+pkill -x xdg-desktop-portal-wlr 2>/dev/null || true
+pkill -x xdg-desktop-portal-gtk 2>/dev/null || true
+pkill -x xdg-desktop-portal     2>/dev/null || true
+sleep 0.5
+
+echo "==> stopping pipewire stack"
+stop "${PIPEWIRE_UNITS[@]}"
+sleep 0.3
+
+echo "==> starting pipewire stack"
+start pipewire.service
+start pipewire-pulse.service
+start wireplumber.service
+sleep 0.7
+
+echo "==> starting portal stack (wlr first, gtk after)"
+start xdg-desktop-portal-wlr.service
+start xdg-desktop-portal-gtk.service
+start xdg-desktop-portal.service
+sleep 0.5
+
+echo "==> survivors:"
+pgrep -af 'xdg-desktop-portal|pipewire|wireplumber' | grep -v 'grep\|obs-restart' | head -20
+
+echo "==> done — recreate the OBS source if it was already added"

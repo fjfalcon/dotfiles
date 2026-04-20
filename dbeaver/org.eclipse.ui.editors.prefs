@@ -1,0 +1,13 @@
+eclipse.preferences.version=1
+AbstractTextEditor.Color.Background=0,43,54
+AbstractTextEditor.Color.Background.SystemDefault=false
+AbstractTextEditor.Color.Foreground=131,148,150
+AbstractTextEditor.Color.Foreground.SystemDefault=false
+AbstractTextEditor.Color.SelectionBackground=7,54,66
+AbstractTextEditor.Color.SelectionBackground.SystemDefault=false
+AbstractTextEditor.Color.SelectionForeground=253,246,227
+AbstractTextEditor.Color.SelectionForeground.SystemDefault=false
+AbstractTextEditor.Color.FindScope=7,54,66
+currentLineColor=7,54,66
+lineNumberColor=88,110,117
+printMarginColor=88,110,117

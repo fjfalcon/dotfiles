@@ -1,0 +1,11 @@
+eclipse.preferences.version=1
+//org.eclipse.ui.commands/state/org.eclipse.ui.navigator.resources.nested.changeProjectPresentation/org.eclipse.ui.commands.radioState=false
+org.eclipse.ui.workbench.ACTIVE_NOFOCUS_TAB_BG_END=7,54,66
+org.eclipse.ui.workbench.ACTIVE_NOFOCUS_TAB_BG_START=7,54,66
+org.eclipse.ui.workbench.ACTIVE_NOFOCUS_TAB_TEXT_COLOR=147,161,161
+org.eclipse.ui.workbench.ACTIVE_TAB_BG_END=38,139,210
+org.eclipse.ui.workbench.ACTIVE_TAB_BG_START=38,139,210
+org.eclipse.ui.workbench.ACTIVE_TAB_TEXT_COLOR=253,246,227
+org.eclipse.ui.workbench.INACTIVE_TAB_BG_END=0,43,54
+org.eclipse.ui.workbench.INACTIVE_TAB_BG_START=0,43,54
+org.eclipse.ui.workbench.INACTIVE_TAB_TEXT_COLOR=131,148,150

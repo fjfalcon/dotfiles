@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Chromium (proxy)
+GenericName=Web Browser
+Comment=Chromium через домашний HTTP-proxy
+Exec=chromiump %U
+Icon=chromium
+Terminal=false
+StartupNotify=true
+StartupWMClass=Chromium
+Categories=Network;WebBrowser;
+Keywords=browser;web;chromium;proxy;
+MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;

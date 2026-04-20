@@ -1,0 +1,116 @@
+# Dunst — modern config, Solarized Dark palette.
+# Reference: https://github.com/dunst-project/dunst/blob/master/dunstrc
+
+[global]
+    # ---------------- placement ----------------
+    monitor = 0
+    follow  = mouse
+    width   = 420
+    height  = 220
+    origin  = top-right
+    offset  = 24x40
+    notification_limit = 5
+
+    # ---------------- look ----------------
+    corner_radius           = 12
+    icon_corner_radius      = 8
+    progress_bar_corner_radius = 6
+    transparency            = 8
+    frame_width             = 2
+    frame_color             = "#268bd2"   # solarized blue
+    background              = "#073642"   # base02
+    foreground              = "#eee8d5"   # base2
+    highlight               = "#2aa198"   # cyan
+    separator_color         = "#586e75"   # base01
+    separator_height        = 2
+    padding                 = 14
+    horizontal_padding      = 18
+    text_icon_padding       = 14
+    gap_size                = 10
+
+    # ---------------- text ----------------
+    font           = "JetBrainsMono Nerd Font 11"
+    line_height    = 4
+    markup         = full
+    format         = "<b>%s</b>\n%b"
+    alignment      = left
+    vertical_alignment = center
+    word_wrap      = yes
+    ellipsize      = middle
+    ignore_newline = no
+    show_age_threshold = 60
+    stack_duplicates = true
+    hide_duplicate_count = false
+
+    # ---------------- icons ----------------
+    enable_recursive_icon_lookup = true
+    icon_theme   = "Adwaita"
+    icon_position = left
+    min_icon_size = 32
+    max_icon_size = 64
+
+    # ---------------- progress bar ----------------
+    progress_bar              = true
+    progress_bar_height       = 8
+    progress_bar_frame_width  = 1
+    progress_bar_min_width    = 150
+    progress_bar_max_width    = 380
+
+    # ---------------- behaviour ----------------
+    sort               = yes
+    indicate_hidden    = yes
+    sticky_history     = yes
+    history_length     = 50
+    show_indicators    = yes
+    idle_threshold     = 120
+    # Left click = invoke the default action (most natural gesture).
+    # Middle click = open the action context menu in fuzzel.
+    # Right click = dismiss the bubble.
+    mouse_left_click   = do_action, close_current
+    mouse_middle_click = context, close_current
+    mouse_right_click  = close_current
+    # Override the dmenu-style picker dunst uses for `dunstctl context`.
+    dmenu              = /usr/bin/fuzzel --dmenu --prompt='dunst ❯ ' --width=60 --lines=10
+
+[urgency_low]
+    background  = "#002b36"   # base03
+    foreground  = "#839496"   # base0
+    frame_color = "#586e75"   # base01
+    timeout     = 5
+
+[urgency_normal]
+    background  = "#073642"   # base02
+    foreground  = "#eee8d5"   # base2
+    frame_color = "#268bd2"   # blue
+    timeout     = 8
+
+[urgency_critical]
+    background  = "#dc322f"   # red
+    foreground  = "#fdf6e3"   # base3
+    frame_color = "#cb4b16"   # orange
+    timeout     = 0
+
+# ---- per-app overrides ----------------------------------------------------
+
+[spotify]
+    appname     = "Spotify"
+    frame_color = "#859900"   # green
+    timeout     = 4
+
+[discord]
+    appname     = "discord"
+    frame_color = "#6c71c4"   # violet
+
+[volume]
+    appname     = "volume"
+    frame_color = "#b58900"   # yellow
+    timeout     = 2
+
+[brightness]
+    appname     = "brightness"
+    frame_color = "#b58900"
+    timeout     = 2
+
+[telegram]
+    appname     = "Telegram Desktop"
+    frame_color = "#2aa198"   # cyan

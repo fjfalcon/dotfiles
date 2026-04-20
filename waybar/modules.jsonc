@@ -1,0 +1,219 @@
+// -*- mode: jsonc -*-
+// Shared module definitions, included by every bar in config.jsonc.
+{
+  "sway/workspaces": {
+    "disable-scroll": false,
+    "all-outputs": false,
+    "warp-on-scroll": false,
+    "format": "{name} <span font_size=\"110%\" rise=\"500\">{icon}</span>",
+    "format-icons": {
+      "1":  "\uf120",
+      "2":  "\uf1d8",
+      "3":  "\uf392",
+      "4":  "\uf268",
+      "5":  "\uf121",
+      "6":  "\uf1b2",
+      "7":  "\uf121",
+      "8":  "\uf07b",
+      "9":  "\uf086",
+      "10": "\uf1bc"
+    }
+  },
+
+  "sway/mode": {
+    "format": "<span style=\"italic\"><span font_size=\"125%\" rise=\"500\">\uf0ad</span> {}</span>",
+    "tooltip": false
+  },
+
+  "sway/scratchpad": {
+    "format": "<span font_size=\"125%\" rise=\"500\">\uf2d2</span> {count}",
+    "show-empty": false,
+    "tooltip": true,
+    "tooltip-format": "{app}: {title}"
+  },
+
+  "sway/window": {
+    "format": "{title}",
+    "max-length": 70,
+    "rewrite": {
+      "(.*) [\u2014-] Mozilla Firefox":  "\uf269  $1",
+      "(.*) - Chromium":                  "\uf268  $1",
+      "(.*) - Telegram":                  "\uf1d8  $1",
+      "(.*) - Discord":                   "\uf392  $1",
+      "(.*) - Visual Studio Code":        "\ue70c  $1"
+    }
+  },
+
+  "sway/language": {
+    "format": "<span font_size=\"125%\" rise=\"500\">\uf11c</span> {short}",
+    "tooltip-format": "{long}",
+    "on-click": "swaymsg input type:keyboard xkb_switch_layout next"
+  },
+
+  "tray": {
+    "icon-size": 16,
+    "spacing": 8
+  },
+
+  // VPN / WireGuard indicator.  Streams JSON from vpn-status.sh which listens
+  // on `nmcli monitor` so state changes show up instantly (no interval poll).
+  // Left-click  -> the same fuzzel network menu as the network module.
+  // Right-click -> nm-connection-editor (edit tunnels, certs, etc.)
+  "custom/vpn": {
+    "exec":         "~/.config/sway/scripts/vpn-status.sh",
+    "return-type":  "json",
+    // waybar 0.15 disallows mixing positional ({}) and named ({icon}/{text})
+    // placeholders in one format string — use {text} explicitly.
+    "format":       "<span font_size=\"125%\" rise=\"500\">{icon}</span> {text}",
+    "format-icons": {
+      "on":  "\uf023",
+      "off": "\uf09c"
+    },
+    "tooltip":        true,
+    "on-click":       "~/.config/sway/scripts/network-menu.sh",
+    "on-click-right": "nm-connection-editor"
+  },
+
+  // Built-in Bluetooth module — pulls state directly from BlueZ via D-Bus, so
+  // no helper script / poll loop is needed for the indicator itself.  The
+  // fuzzel picker (sway/scripts/bluetooth-menu.sh) replaces blueman-applet
+  // for everyday connect/disconnect/scan; blueman-manager stays as the GUI
+  // for pairing weird devices and tweaking audio profiles (right-click).
+  "bluetooth": {
+    "format":                    "<span font_size=\"125%\" rise=\"500\">\uf294</span>",
+    "format-disabled":           "<span font_size=\"125%\" rise=\"500\">\uf294</span>",
+    "format-off":                "<span font_size=\"125%\" rise=\"500\">\uf294</span>",
+    "format-connected":          "<span font_size=\"125%\" rise=\"500\">\uf294</span> {num_connections}",
+    "format-connected-battery":  "<span font_size=\"125%\" rise=\"500\">\uf294</span> {device_alias} {device_battery_percentage}%",
+    "tooltip-format":            "{controller_alias}\nstatus: {status}",
+    "tooltip-format-connected":  "{controller_alias}\n{num_connections} connected:\n{device_enumerate}",
+    "tooltip-format-enumerate-connected":         "  {device_alias}",
+    "tooltip-format-enumerate-connected-battery": "  {device_alias} ({device_battery_percentage}%)",
+    "on-click":       "~/.config/sway/scripts/bluetooth-menu.sh",
+    "on-click-right": "blueman-manager"
+  },
+
+  "network": {
+    "format-wifi":          "<span font_size=\"125%\" rise=\"500\">\uf1eb</span> {essid} {signalStrength}%",
+    "format-ethernet":      "<span font_size=\"125%\" rise=\"500\">\uf6ff</span> {ifname}",
+    "format-disconnected":  "<span font_size=\"125%\" rise=\"500\">\uf127</span> offline",
+    "format-linked":        "<span font_size=\"125%\" rise=\"500\">\uf6ff</span> {ifname} (no IP)",
+    "tooltip-format":       "{ifname} via {gwaddr}\n{ipaddr}/{cidr}",
+    "tooltip-format-wifi":  "{essid} ({signalStrength}%)\n{ipaddr}/{cidr}\n\uf019 {bandwidthDownBits}   \uf093 {bandwidthUpBits}",
+    // Left-click  -> fuzzel-driven Wi-Fi / VPN picker (see sway/scripts/network-menu.sh)
+    // Right-click -> full GTK editor for advanced changes (saved as floating in sway/config)
+    "on-click":             "~/.config/sway/scripts/network-menu.sh",
+    "on-click-right":       "nm-connection-editor"
+  },
+
+  "pulseaudio": {
+    // {format_source} renders the microphone block inline; we put it FIRST
+    // so the order in the pill is "mic → sink" (matches the user's preferred
+    // mental model).  Each format-* embeds {format_source} so the mic stays
+    // visible regardless of sink state (BT, muted, etc.).
+    // Mic icons are the classic FA microphone / microphone-slash pair, sized
+    // at 135% — slightly larger than the 125% used elsewhere in the bar
+    // (FA's microphone glyph is optically smaller than the speaker glyph),
+    // but still small enough to keep the bar at its 34-px minimum.
+    "format":                  "{format_source}   <span font_size=\"125%\" rise=\"500\">{icon}</span> {volume}%",
+    "format-bluetooth":        "{format_source}   <span font_size=\"125%\" rise=\"500\">{icon} \uf293</span> {volume}%",
+    "format-bluetooth-muted":  "{format_source}   <span font_size=\"125%\" rise=\"500\">\uf026 \uf293</span>",
+    "format-muted":            "{format_source}   <span font_size=\"125%\" rise=\"500\">\uf026</span> muted",
+    "format-source":           "<span font_size=\"135%\" rise=\"500\">\uf130</span> {volume}%",
+    "format-source-muted":     "<span font_size=\"135%\" rise=\"500\">\uf131</span>",
+    "format-icons": {
+      "headphone":  "\uf025",
+      "hands-free": "\uf590",
+      "headset":    "\uf590",
+      "phone":      "\uf095",
+      "portable":   "\uf10b",
+      "car":        "\uf1b9",
+      "default":    ["\uf026", "\uf027", "\uf028"]
+    },
+    "scroll-step":         5,
+    "tooltip-format":      "Output: {desc} ({volume}%)\nInput:  {source_desc} ({source_volume}%)",
+    // Scroll on the pill changes sink volume (default behaviour).
+    // Right-click toggles sink mute, middle-click toggles source mute,
+    // so both can be silenced without leaving the bar.
+    "on-click":            "pavucontrol",
+    "on-click-right":      "wpctl set-mute @DEFAULT_AUDIO_SINK@   toggle",
+    "on-click-middle":     "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+  },
+
+  "memory": {
+    "interval": 5,
+    "format":          "<span font_size=\"125%\" rise=\"500\">\uefc5</span> {used:0.1f}G",
+    "tooltip-format":  "RAM: {used:0.1f}G / {total:0.1f}G  ({percentage}%)\nSwap: {swapUsed:0.1f}G / {swapTotal:0.1f}G"
+  },
+
+  "cpu": {
+    "interval": 2,
+    "format":   "<span font_size=\"125%\" rise=\"500\">\uf2db</span> {usage}%",
+    "tooltip": false,
+    "on-click": "alacritty -e btop"
+  },
+
+  "temperature": {
+    "interval": 5,
+    "critical-threshold": 85,
+    "format":          "<span font_size=\"125%\" rise=\"500\">\uf2c8</span> {temperatureC}°",
+    "format-critical": "<span font_size=\"125%\" rise=\"500\">\uf76b</span> {temperatureC}°",
+    "tooltip-format":  "{temperatureC}°C / {temperatureF}°F"
+  },
+
+  "clock": {
+    "interval": 30,
+    "timezone": "Europe/Moscow",
+    "locale":   "ru_RU.UTF-8",
+    "format":          "<span font_size=\"125%\" rise=\"500\">\uf017</span> {:%a %d %b  %H:%M}",
+    "format-alt":      "<span font_size=\"125%\" rise=\"500\">\uf073</span> {:%H:%M:%S  %Y-%m-%d}",
+    "tooltip-format":  "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+
+  // swaync — one custom module per output.  Module-level "output" filter
+  // is silently ignored by waybar 0.15 for custom modules, so we use a
+  // bar-array config (see config.jsonc) and let each bar pick its own.
+  "custom/swaync_dp1": {
+    "tooltip": true,
+    "format": "<span font_size=\"125%\" rise=\"500\">{icon}</span> {text}",
+    "format-icons": {
+      "notification":              "\uf0a2",
+      "none":                      "\uf0f3",
+      "dnd-notification":          "\uf1f7",
+      "dnd-none":                  "\uf1f7",
+      "inhibited-notification":    "\uf0a2",
+      "inhibited-none":            "\uf0f3",
+      "dnd-inhibited-notification":"\uf1f7",
+      "dnd-inhibited-none":        "\uf1f7"
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client --subscribe-waybar",
+    "on-click":        "~/.config/sway/scripts/swaync-toggle.sh -o DP-1",
+    "on-click-right":  "swaync-client --toggle-dnd --skip-wait",
+    "on-click-middle": "swaync-client --close-all --skip-wait",
+    "escape": true
+  },
+
+  "custom/swaync_dp2": {
+    "tooltip": true,
+    "format": "<span font_size=\"125%\" rise=\"500\">{icon}</span> {text}",
+    "format-icons": {
+      "notification":              "\uf0a2",
+      "none":                      "\uf0f3",
+      "dnd-notification":          "\uf1f7",
+      "dnd-none":                  "\uf1f7",
+      "inhibited-notification":    "\uf0a2",
+      "inhibited-none":            "\uf0f3",
+      "dnd-inhibited-notification":"\uf1f7",
+      "dnd-inhibited-none":        "\uf1f7"
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client --subscribe-waybar",
+    "on-click":        "~/.config/sway/scripts/swaync-toggle.sh -o DP-2",
+    "on-click-right":  "swaync-client --toggle-dnd --skip-wait",
+    "on-click-middle": "swaync-client --close-all --skip-wait",
+    "escape": true
+  }
+}

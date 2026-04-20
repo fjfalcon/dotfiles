@@ -1,0 +1,103 @@
+<?xml version="1.0" ?>
+<fontconfig>
+	<include ignore_missing="yes">conf.d</include>
+	<match target="font">
+		<edit mode="assign" name="rgba">
+			<const>rgb</const>
+		</edit>
+	</match>
+	<match target="font">
+		<edit mode="assign" name="hinting">
+			<bool>false</bool>
+		</edit>
+	</match>
+	<match target="font">
+		<edit name="autohint" mode="assign">
+			<bool>true</bool>
+		</edit>
+	</match>
+	<match target="font">
+		<edit mode="assign" name="hintstyle">
+			<const>hintnone</const>
+		</edit>
+	</match>
+	<match target="font">
+		<edit name="lcdfilter" mode="assign">
+			<const>lcddefault</const>
+		</edit>
+	</match>
+	<match target="font">
+		<edit mode="assign" name="antialias">
+			<bool>true</bool>
+		</edit>
+	</match>
+	<match target="pattern">
+		<edit name="dpi" mode="assign">
+			<double>109</double>
+		</edit>
+	</match>
+<alias>
+        <family>emoji</family>
+        <prefer>
+            <family>Twemoji Mozilla</family>
+            <family>Noto Color Emoji</family>
+        </prefer>
+    </alias>	
+	<match target="pattern">
+		<test qual="any" name="family">
+			<string>monospace</string>
+		</test>
+		<edit name="family" mode="assign" binding="same">
+			<string>Source Code Pro</string>
+		</edit>
+	</match>
+	<match target="pattern">
+		<test qual="any" name="family">
+			<string>sans-serif</string>
+		</test>
+		<edit name="family" mode="assign" binding="same">
+			<string>SF Pro Text</string>
+		</edit>
+	</match>
+	<match target="pattern">
+		<test qual="any" name="family">
+			<string>Source Code Pro</string>
+		</test>
+		<edit name="family" mode="assign" binding="same">
+			<string>SauceCodePro Nerd Font Mono</string>
+		</edit>
+	</match>
+	<match target="font" >
+		<edit name="embeddedbitmap" mode="assign">
+			<bool>false</bool>
+		</edit>
+	</match>
+	<alias>
+		<family>terminal-font</family>
+		<prefer>
+			<family>JetBrains Mono</family>
+			<family>Noto Color Emoji</family>
+		</prefer>
+	</alias>
+	    <alias>
+        <family>sans-serif</family>
+        <prefer>
+            <family>Liberation Sans</family>
+            <family>Noto Color Emoji</family>
+        </prefer>
+    </alias>
+    <alias>
+        <family>serif</family>
+        <prefer>
+            <family>Liberation Serif</family>
+            <family>Noto Color Emoji</family>
+        </prefer>
+    </alias>
+    <alias>
+        <family>monospace</family>
+        <prefer>
+            <family>Ubuntu Mono</family>
+            <family>Noto Color Emoji</family>
+        </prefer>
+    </alias>
+</fontconfig>

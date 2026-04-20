@@ -1,0 +1,103 @@
+{
+  "$schema": "/etc/xdg/swaync/configSchema.json",
+
+  "// ---- placement ---------------------------------------------------": "",
+  "positionX": "right",
+  "positionY": "top",
+  "layer": "overlay",
+  "control-center-layer": "top",
+  "layer-shell": true,
+  "layer-shell-cover-screen": false,
+  "cssPriority": "user",
+  "ignore-gtk-theme": true,
+
+  "control-center-margin-top": 8,
+  "control-center-margin-right": 8,
+  "control-center-margin-bottom": 8,
+  "control-center-margin-left": 0,
+  "control-center-width": 460,
+  "control-center-height": 720,
+  "fit-to-screen": false,
+
+  "// ---- notification bubble ----------------------------------------": "",
+  "notification-window-width": 440,
+  "notification-body-image-height": 140,
+  "notification-body-image-width": 220,
+  "notification-icon-size": 40,
+  "notification-2fa-action": true,
+  "notification-inline-replies": true,
+  "notification-grouping": true,
+  "image-visibility": "when-available",
+  "relative-timestamps": true,
+  "transition-time": 180,
+
+  "// ---- timeouts (seconds; 0 = until clicked) ----------------------": "",
+  "timeout": 8,
+  "timeout-low": 4,
+  "timeout-critical": 0,
+
+  "// ---- behaviour --------------------------------------------------": "",
+  "hide-on-clear": false,
+  "hide-on-action": true,
+  "keyboard-shortcuts": true,
+  "script-fail-notify": true,
+  "text-empty": "No notifications",
+
+  "// ---- control-center widgets (top → bottom) ----------------------": "",
+  "widgets": [
+    "title",
+    "dnd",
+    "mpris",
+    "buttons-grid",
+    "notifications"
+  ],
+
+  "widget-config": {
+    "title": {
+      "text": "Notifications",
+      "clear-all-button": true,
+      "button-text": "Clear all"
+    },
+    "dnd": {
+      "text": "Do not disturb"
+    },
+    "notifications": {
+      "vexpand": true
+    },
+    "mpris": {
+      "blacklist": [],
+      "autohide": true,
+      "show-album-art": "always",
+      "loop-carousel": false
+    },
+    "buttons-grid": {
+      "buttons-per-row": 4,
+      "actions": [
+        {
+          "label": "\uf1eb",
+          "type": "toggle",
+          "command": "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && nmcli radio wifi on || nmcli radio wifi off'",
+          "update-command": "sh -c '[[ $(nmcli radio wifi) == \"enabled\" ]] && echo true || echo false'"
+        },
+        {
+          "label": "\uf293",
+          "type": "toggle",
+          "command": "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && rfkill unblock bluetooth || rfkill block bluetooth'",
+          "update-command": "sh -c '[[ $(rfkill list bluetooth | grep -c \"Soft blocked: yes\") == 0 ]] && echo true || echo false'"
+        },
+        {
+          "label": "\uf186",
+          "type": "toggle",
+          "command": "sh -c 'systemctl --user restart wlsunset.service 2>/dev/null || notify-send \"Night light\" \"wlsunset not running\"'",
+          "update-command": "sh -c 'systemctl --user is-active wlsunset.service && echo true || echo false'"
+        },
+        {
+          "label": "\uf2dc",
+          "type": "toggle",
+          "command": "sh -c 'pgrep -x swayidle && pkill -x swayidle || (swayidle -w timeout 600 swaylock &)'",
+          "update-command": "sh -c 'pgrep -x swayidle >/dev/null && echo false || echo true'"
+        }
+      ]
+    }
+  }
+}

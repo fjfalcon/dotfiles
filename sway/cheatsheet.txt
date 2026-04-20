@@ -1,0 +1,55 @@
+Sway cheatsheet  (Mod = Super)
+══════════════════════════════════════════════════════════════════════════════
+Launchers
+  Mod+Return            terminal (alacritty)
+  Mod+d                 app launcher (fuzzel)
+  Mod+Shift+d           run binary by name
+  Mod+e                 file manager
+  Mod+b                 browser
+  Mod+F12               lock screen
+  Mod+F1                this cheatsheet
+
+Windows
+  Mod+Shift+q           kill focused
+  Mod+f                 fullscreen
+  Mod+Shift+space       toggle floating
+  Mod+space             cycle tiling/floating focus
+  Mod+w                 sticky toggle
+  Mod+a                 focus parent
+
+Layout
+  Mod+v / Mod+Shift+v   split vertical / horizontal
+  Mod+s / Mod+t / Mod+y stacking / tabbed / split
+  Mod+r                 enter resize mode
+
+Movement (vim hjkl, also arrows)
+  Mod+h/j/k/l           focus
+  Mod+Shift+h/j/k/l     move
+  Mod+x / Mod+Shift+x   move container/workspace to output left
+  Mod+m                 cycle workspace to next output
+
+Workspaces
+  Mod+1..0              switch
+  Mod+Shift+1..0        move container to ws
+  Mod+Tab               last workspace
+  Mod+- / Mod+Shift+-   scratchpad show / move-to
+
+Screenshots  (saved to ~/scrot/)
+  Mod+Shift+s           region -> clipboard + file
+  Mod+Print             same as above
+  Print                 full screen
+  Mod+Shift+Print       active window
+  Mod+Ctrl+Print        region -> swappy editor
+
+Audio / Brightness
+  XF86Audio*            volume / mute / mic / play / next / prev
+  XF86MonBrightness*    brightness +/- 5%
+
+Idle / Lock
+  10 min idle           swaylock
+  12 min idle           displays off
+  before sleep          lock
+
+Reload / Exit
+  Mod+Shift+r           reload sway
+  Mod+Shift+e           exit confirmation (swaynag)

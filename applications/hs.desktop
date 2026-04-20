@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Hearthstone
+GenericName=Card Game
+Comment=Blizzard Hearthstone (Linux wrapper)
+Exec=hs
+Icon=applications-games
+Terminal=false
+StartupNotify=true
+Categories=Game;CardGame;
+Keywords=hearthstone;blizzard;game;card;
